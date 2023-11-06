@@ -1,4 +1,5 @@
 import 'package:eamar_app/providers/auth_provider.dart';
+import 'package:eamar_app/screens/auth/register_screen.dart';
 import 'package:eamar_app/screens/auth/splash_screen.dart';
 import 'package:eamar_app/screens/boarding/board_screen_one.dart';
 import 'package:flutter/material.dart';
@@ -57,10 +58,7 @@ class _ScreenRouterState extends State<ScreenRouter> {
               : auth.isAuthenticated!
                   ? const Scaffold(
                       body: Center(child: Text('authenticated, Home Page ')))
-                  : const Scaffold(
-                      body:
-                          Center(child: Text('not authenticated, Login Page')),
-                    );
+                  : const RegisterScreen();
     });
   }
 }

@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthProvider with ChangeNotifier {
@@ -39,6 +39,10 @@ class AuthProvider with ChangeNotifier {
     setLoading(true);
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     token = prefs.getString('token');
+    if (kDebugMode) {
+      print(" Token Status : $token");
+      print(" isFirstTime ? : $isFirstTime");
+    }
     if (token != null) {
       setLoading(false);
       setAuthenticated(true);
