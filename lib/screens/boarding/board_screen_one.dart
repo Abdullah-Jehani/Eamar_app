@@ -39,8 +39,9 @@ class _BoardScreenOneState extends State<BoardScreenOne> {
                 });
               },
               onClickSkip: () {
-                auth.isFirstTime == false;
                 setState(() {
+                  auth.isFirstTime == false;
+                  auth.setFirstTime(false);
                   Navigator.pushAndRemoveUntil(
                       context,
                       CupertinoPageRoute(

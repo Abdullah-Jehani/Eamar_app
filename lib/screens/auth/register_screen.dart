@@ -20,12 +20,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
+  final emailRegex =
+      RegExp(r'^[\w+\-+=_]+(\.[\w+\-+=_]+)*@([\w\-+=_]+\.)+[a-zA-Z]{2,7}$');
   bool isValid = false;
   bool hidePass = true;
 
   validator() async {
-    final emailRegex = RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
-
     if (userNameController.text.length > 2 &&
         emailController.text.isNotEmpty &&
         emailRegex.hasMatch(emailController.text) &&
@@ -54,13 +54,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
               actions: [
                 GestureDetector(
                   onTap: () {
-                    isValid
-                        ? Navigator.pushAndRemoveUntil(
+                    validator();
+                    if (isValid) {
+                      Provider.of<AuthProvider>(context, listen: false)
+                          .register({
+                        "name": userNameController.text.toString(),
+                        "email": emailController.text.toString(),
+                        "password": passwordController.text.toString()
+                      }, context).then((value) {
+                        if (value.first) {
+                          Navigator.pushAndRemoveUntil(
                             context,
                             CupertinoPageRoute(
                                 builder: (context) => const LoginScreen()),
-                            (route) => false)
-                        : null;
+                            (route) => false,
+                          );
+                        } else {
+                          SnackBar snackBar =
+                              SnackBar(content: Text(value.last));
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        }
+                      });
+                    } else {
+                      SnackBar snackBar = const SnackBar(
+                        content: Text('Your input is invalid'),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
                   },
                   child: Text(
                     'التالي ',
@@ -108,7 +128,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   Padding(
                     padding: EdgeInsets.only(right: size.width * .090),
                     child: Text(
-                      'ادخل بياناتك الشخصية',
+                      'قم بادخل بياناتك الشخصية',
                       style: TextStyle(
                           color: textColor, fontSize: 16, fontFamily: 'cairo'),
                       textAlign: TextAlign.right,
@@ -143,7 +163,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             padding: EdgeInsets.symmetric(
                                 horizontal: size.width * .070),
                             child: InputFieldWidget(
-                                text: 'ثلاثة احرف علي الاقل',
+                                isArabic: true,
+                                text: ' ثلاثة احرف عربية علي الاقل',
                                 // validator: (value) {
 
                                 //   if (value!.isEmpty) {

@@ -41,6 +41,8 @@ class _BoardScreenTwoState extends State<BoardScreenTwo> {
               onClickSkip: () {
                 setState(() {
                   auth.isFirstTime == false;
+                  auth.setFirstTime(false);
+
                   Navigator.pushAndRemoveUntil(
                       context,
                       CupertinoPageRoute(

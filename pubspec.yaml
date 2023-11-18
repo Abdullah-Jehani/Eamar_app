@@ -38,6 +38,7 @@ dependencies:
   shared_preferences:
   provider:
   iconify_flutter:
+  http:
 
 
 dev_dependencies:

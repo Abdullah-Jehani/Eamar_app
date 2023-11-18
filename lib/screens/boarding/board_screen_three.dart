@@ -32,6 +32,8 @@ class _BoardScreenThreeState extends State<BoardScreenThree> {
             widths: [10.0, 10.0, size.width * .20],
             onClickNext: () {
               setState(() {
+                auth.setFirstTime(false);
+
                 auth.isFirstTime == false;
                 Navigator.pushAndRemoveUntil(
                     context,
@@ -43,6 +45,8 @@ class _BoardScreenThreeState extends State<BoardScreenThree> {
             onClickSkip: () {
               setState(() {
                 auth.isFirstTime == false;
+                auth.setFirstTime(false);
+
                 Navigator.pushAndRemoveUntil(
                     context,
                     CupertinoPageRoute(
