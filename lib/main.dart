@@ -1,7 +1,8 @@
 import 'package:eamar_app/providers/auth_provider.dart';
-import 'package:eamar_app/screens/auth/register_screen.dart';
+import 'package:eamar_app/screens/auth/login_screen.dart';
 import 'package:eamar_app/screens/auth/splash_screen.dart';
 import 'package:eamar_app/screens/boarding/board_screen_one.dart';
+import 'package:eamar_app/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +18,6 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [ChangeNotifierProvider(create: (context) => AuthProvider())],
       child: MaterialApp(
-        title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -38,6 +38,7 @@ class ScreenRouter extends StatefulWidget {
 
 class _ScreenRouterState extends State<ScreenRouter> {
   @override
+  // lifecycle hooks that to be built when widget is called for first time
   void initState() {
     Provider.of<AuthProvider>(context, listen: false).initAuthentication();
     Provider.of<AuthProvider>(context, listen: false).checkFirstTime();
@@ -56,9 +57,8 @@ class _ScreenRouterState extends State<ScreenRouter> {
           : auth.isFirstTime
               ? const BoardScreenOne()
               : auth.isAuthenticated!
-                  ? const Scaffold(
-                      body: Center(child: Text('authenticated, Home Page ')))
-                  : const RegisterScreen();
+                  ? const HomeScreen()
+                  : const LoginScreen();
     });
   }
 }

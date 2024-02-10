@@ -39,6 +39,7 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
   }
 
+// check if user is authenticated or not.
   initAuthentication() async {
     setLoading(true);
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -60,30 +61,27 @@ class AuthProvider with ChangeNotifier {
   Future<List> register(Map userBody, BuildContext context) async {
     setLoading(true);
     final response =
-        await api.post('http://192.168.1.4:8080/api/register', userBody);
+        await api.post('http://192.168.1.10:8080/api/register', userBody);
     if (response.statusCode == 201) {
       setAuthenticated(true);
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       var decodedToken = json.decode(response.body)['token'];
       prefs.setString('token', decodedToken);
       if (kDebugMode) {
-        print(" Response Status${response.statusCode}");
-        print(" isFirstTime ? : $isFirstTime");
-        print(" Token Status : $token");
-        print(" Token : $decodedToken");
+        print("Response Status: ${response.statusCode}");
+        print("Token: $decodedToken");
       }
       if (kDebugMode) {
-        print(" Response Body ${response.body}");
-        print(" isFirstTime ? : $isFirstTime");
+        print("Response Body: ${response.body}");
       }
       return [true, ''];
     } else {
       setAuthenticated(false);
       if (kDebugMode) {
-        print(" Response Status${response.statusCode}");
+        print("Response Status: ${response.statusCode}");
       }
       if (kDebugMode) {
-        print(" Response Body ${response.body}");
+        print("Response Body: ${response.body}");
       }
       setLoading(false);
       return [false, json.decode(response.body)['message']];
@@ -93,9 +91,9 @@ class AuthProvider with ChangeNotifier {
   Future<List> login(Map userBody, BuildContext context) async {
     setLoading(true);
     final response =
-        await api.post('http://192.168.1.4:8080/api/register', userBody);
+        await api.post('http://192.168.1.10:8080/api/login', userBody);
 
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200) {
       setAuthenticated(true);
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       var decodedToken = json.decode(response.body)['token'];

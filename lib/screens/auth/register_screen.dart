@@ -48,7 +48,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Consumer<AuthProvider>(builder: (context, auth, _) {
       return Scaffold(
           appBar: AppBar(
-              elevation: 0,
               shadowColor: Colors.white,
               backgroundColor: Colors.white,
               actions: [
@@ -101,251 +100,204 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 )
               ]),
           body: SingleChildScrollView(
-            child: Align(
-              alignment: Alignment.topRight,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  SizedBox(
-                    height: size.height * .005,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: size.width * 0.090),
-                    child: Text(
-                      ' أنشئ حساب',
-                      style: TextStyle(
-                        color: primaryColor,
-                        fontFamily: 'cairo',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22,
-                      ),
-                      textAlign: TextAlign.right,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                SizedBox(
+                  height: size.height * .005,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(right: size.width * 0.090),
+                  child: Text(
+                    ' أنشئ حساب',
+                    style: TextStyle(
+                      color: primaryColor,
+                      fontFamily: 'cairo',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
                     ),
+                    textAlign: TextAlign.right,
                   ),
-                  SizedBox(
-                    height: size.height * .015,
+                ),
+                SizedBox(
+                  height: size.height * .015,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(right: size.width * .090),
+                  child: Text(
+                    'قم بادخل بياناتك الشخصية',
+                    style: TextStyle(
+                        color: textColor, fontSize: 16, fontFamily: 'cairo'),
+                    textAlign: TextAlign.right,
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(right: size.width * .090),
-                    child: Text(
-                      'قم بادخل بياناتك الشخصية',
-                      style: TextStyle(
-                          color: textColor, fontSize: 16, fontFamily: 'cairo'),
-                      textAlign: TextAlign.right,
-                    ),
-                  ),
-                  SizedBox(
-                    height: size.height * .040,
-                  ),
-                  Form(
-                    onChanged: () {
-                      validator();
-                    },
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(right: size.width * 0.090),
-                          child: const Align(
-                            alignment: Alignment.topRight,
-                            child: Text(
-                              'اسم المستخدم',
-                              style: TextStyle(
-                                fontFamily: 'cairo',
-                                fontSize: 15,
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: size.height * .015,
-                        ),
-                        Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * .070),
-                            child: InputFieldWidget(
-                                isArabic: true,
-                                text: ' ثلاثة احرف عربية علي الاقل',
-                                // validator: (value) {
-
-                                //   if (value!.isEmpty) {
-                                //     return 'من فضلك ادخل اسم مستخدم';
-                                //   }
-                                //   if (value.length < 3) {
-                                //     return 'please enter real name';
-                                //   }
-                                //   return '';
-                                // },
-                                controller: userNameController,
-                                isPassword: false,
-                                icon: const Icon(Icons.person))),
-                        SizedBox(
-                          height: size.height * .025,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(right: size.width * 0.090),
-                          child: const Align(
-                            alignment: Alignment.topRight,
-                            child: Text(
-                              'البريد الالكتروني',
-                              style: TextStyle(
-                                fontFamily: 'cairo',
-                                fontSize: 15,
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: size.height * .015,
-                        ),
-                        Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * .070),
-                            child: InputFieldWidget(
-                                controller: emailController,
-                                // validator: (value) {
-                                //   if (value!.isEmpty) {
-                                //     return 'please enter an email';
-                                //   }
-                                //   if (value.length < 9) {
-                                //     return 'please enter a valid email';
-                                //   }
-                                //   if (value.contains('@') == false) {
-                                //     return 'please enter a valid email';
-                                //   }
-                                //   if (value.contains('.') == false) {
-                                //     return 'please enter a valid email';
-                                //   }
-                                //   return '';
-                                // },
-                                isPassword: false,
-                                icon: const Icon(Icons.email),
-                                text: 'johndoe@gmail.com')),
-                        SizedBox(
-                          height: size.height * .025,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(right: size.width * 0.090),
-                          child: const Align(
-                            alignment: Alignment.topRight,
-                            child: Text(
-                              'كلمة المرور',
-                              style: TextStyle(
-                                fontFamily: 'cairo',
-                                fontSize: 15,
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: size.height * .015,
-                        ),
-                        Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * .070),
-                            child: InputFieldWidget(
-                                controller: passwordController,
-                                // validator: (value) {
-                                //   if (value!.isEmpty) {
-                                //     return 'please enter a password';
-                                //   }
-                                //   if (value.length < 8) {
-                                //     return 'password must be 9 characters long';
-                                //   }
-                                //   return '';
-                                // },
-                                isPassword: true,
-                                icon: const Icon(Icons.visibility),
-                                text: 'ثماني خانات علي الاقل')),
-                        SizedBox(
-                          height: size.height * .025,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(right: size.width * 0.090),
-                          child: const Align(
-                            alignment: Alignment.topRight,
-                            child: Text(
-                              'اعد ادخال كلمة المرور',
-                              style: TextStyle(
-                                fontFamily: 'cairo',
-                                fontSize: 15,
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: size.height * .015,
-                        ),
-                        Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * .070),
-                            child: InputFieldWidget(
-                                controller: confirmPasswordController,
-                                // validator: (value) {
-                                //   if (value!.isEmpty) {
-                                //     return 'please enter a password';
-                                //   }
-                                //   if (value.length < 9) {
-                                //     return 'please enter the same password';
-                                //   }
-                                //   return '';
-                                // },
-                                isPassword: true,
-                                icon: const Icon(Icons.visibility),
-                                text: 'اعد ادخال كلمة المرور')),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: size.height * .040,
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Column(
-                      children: [
-                        const Text(
-                          'لديك حساب بالفعل ؟',
-                          style: TextStyle(
-                              color: Colors.black,
+                ),
+                SizedBox(
+                  height: size.height * .040,
+                ),
+                Form(
+                  onChanged: () {
+                    validator();
+                  },
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(right: size.width * 0.090),
+                        child: const Align(
+                          alignment: Alignment.topRight,
+                          child: Text(
+                            'اسم المستخدم',
+                            style: TextStyle(
                               fontFamily: 'cairo',
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
+                              fontSize: 15,
+                            ),
+                          ),
                         ),
-                        SizedBox(
-                          height: size.height * .009,
+                      ),
+                      SizedBox(
+                        height: size.height * .015,
+                      ),
+                      Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: size.width * .070),
+                          child: InputFieldWidget(
+                              isArabic: true,
+                              text: ' ثلاثة احرف عربية علي الاقل',
+                              controller: userNameController,
+                              isPassword: false,
+                              icon: const Icon(Icons.person))),
+                      SizedBox(
+                        height: size.height * .025,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(right: size.width * 0.090),
+                        child: const Align(
+                          alignment: Alignment.topRight,
+                          child: Text(
+                            'البريد الالكتروني',
+                            style: TextStyle(
+                              fontFamily: 'cairo',
+                              fontSize: 15,
+                            ),
+                          ),
                         ),
-                        TextButton(
-                            onPressed: () {
-                              Navigator.pushAndRemoveUntil(
-                                  context,
-                                  CupertinoPageRoute(
-                                      builder: (context) =>
-                                          const LoginScreen()),
-                                  (route) => false);
-                            },
-                            child: Container(
-                              width: size.width * .80,
-                              height: size.height * .07,
-                              decoration: BoxDecoration(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(10)),
-                                color: secondaryColor,
+                      ),
+                      SizedBox(
+                        height: size.height * .015,
+                      ),
+                      Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: size.width * .070),
+                          child: InputFieldWidget(
+                              controller: emailController,
+                              isPassword: false,
+                              icon: const Icon(Icons.email),
+                              text: 'johndoe@gmail.com')),
+                      SizedBox(
+                        height: size.height * .025,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(right: size.width * 0.090),
+                        child: const Align(
+                          alignment: Alignment.topRight,
+                          child: Text(
+                            'كلمة المرور',
+                            style: TextStyle(
+                              fontFamily: 'cairo',
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: size.height * .015,
+                      ),
+                      Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: size.width * .070),
+                          child: InputFieldWidget(
+                              controller: passwordController,
+                              isPassword: true,
+                              icon: const Icon(Icons.visibility),
+                              text: 'ثماني خانات علي الاقل')),
+                      SizedBox(
+                        height: size.height * .025,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(right: size.width * 0.090),
+                        child: const Align(
+                          alignment: Alignment.topRight,
+                          child: Text(
+                            'اعد ادخال كلمة المرور',
+                            style: TextStyle(
+                              fontFamily: 'cairo',
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: size.height * .015,
+                      ),
+                      Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: size.width * .070),
+                          child: InputFieldWidget(
+                              controller: confirmPasswordController,
+                              isPassword: true,
+                              icon: const Icon(Icons.visibility),
+                              text: 'اعد ادخال كلمة المرور')),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: size.height * .040,
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: [
+                      const Text(
+                        'لديك حساب بالفعل ؟',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'cairo',
+                          fontSize: 14,
+                        ),
+                      ),
+                      SizedBox(
+                        height: size.height * .009,
+                      ),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                  builder: (context) => const LoginScreen()),
+                            );
+                          },
+                          child: Container(
+                            width: size.width * .87,
+                            height: size.height * .07,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                              color: secondaryColor,
+                            ),
+                            child: Center(
+                              child: Text(
+                                'تسجيل دخول',
+                                style: TextStyle(
+                                    color: primaryColor,
+                                    fontFamily: 'cairo',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold),
                               ),
-                              child: Center(
-                                child: Text(
-                                  'تسجيل دخول',
-                                  style: TextStyle(
-                                      color: primaryColor,
-                                      fontFamily: 'cairo',
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ))
-                      ],
-                    ),
-                  )
-                ],
-              ),
+                            ),
+                          ))
+                    ],
+                  ),
+                )
+              ],
             ),
           ));
     });

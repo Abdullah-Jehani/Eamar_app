@@ -5,3 +5,4 @@ Color secondaryColor = const Color(0xFFE6F5F3);
 Color greyColor = const Color(0xFFD9D9D9);
 Color textColor = const Color(0xFF5D706D);
 Color fillInputColor = const Color(0xFFF5F5F5);
+Color faceBook = const Color(0xFF1675EC);
