@@ -61,7 +61,7 @@ class AuthProvider with ChangeNotifier {
   Future<List> register(Map userBody, BuildContext context) async {
     setLoading(true);
     final response =
-        await api.post('http://192.168.1.10:8080/api/register', userBody);
+        await api.post('http://192.168.43.115:8080/api/register', userBody);
     if (response.statusCode == 201) {
       setAuthenticated(true);
       final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -91,10 +91,11 @@ class AuthProvider with ChangeNotifier {
   Future<List> login(Map userBody, BuildContext context) async {
     setLoading(true);
     final response =
-        await api.post('http://192.168.1.10:8080/api/login', userBody);
+        await api.post('http://192.168.43.115:8080/api/login', userBody);
 
     if (response.statusCode == 200) {
       setAuthenticated(true);
+      setLoading(false);
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       var decodedToken = json.decode(response.body)['token'];
       prefs.setString("token", decodedToken);
@@ -108,6 +109,7 @@ class AuthProvider with ChangeNotifier {
         print(" Response Body ${response.body}");
         print(" isFirstTime ? : $isFirstTime");
       }
+      setLoading(false);
       return [true, ''];
     } else {
       setAuthenticated(false);

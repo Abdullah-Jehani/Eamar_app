@@ -1,6 +1,7 @@
 import 'package:eamar_app/helpers/colors.dart';
 import 'package:eamar_app/providers/auth_provider.dart';
 import 'package:eamar_app/screens/auth/login_screen.dart';
+import 'package:eamar_app/screens/home/home_screen.dart';
 import 'package:eamar_app/widgets/register/input_field_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       RegExp(r'^[\w+\-+=_]+(\.[\w+\-+=_]+)*@([\w\-+=_]+\.)+[a-zA-Z]{2,7}$');
   bool isValid = false;
   bool hidePass = true;
+  bool isLogginIn = false;
 
   validator() async {
     if (userNameController.text.length > 2 &&
@@ -55,6 +57,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   onTap: () {
                     validator();
                     if (isValid) {
+                      setState(() {
+                        isLogginIn = true;
+                      });
                       Provider.of<AuthProvider>(context, listen: false)
                           .register({
                         "name": userNameController.text.toString(),
@@ -65,10 +70,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           Navigator.pushAndRemoveUntil(
                             context,
                             CupertinoPageRoute(
-                                builder: (context) => const LoginScreen()),
+                                builder: (context) => const HomeScreen()),
                             (route) => false,
                           );
                         } else {
+                          setState(() {
+                            isLogginIn = false;
+                          });
                           SnackBar snackBar =
                               SnackBar(content: Text(value.last));
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -84,7 +92,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: Text(
                     'التالي ',
                     style: TextStyle(
-                        color: isValid ? primaryColor : greyColor,
+                        color:
+                            isValid && !isLogginIn ? primaryColor : greyColor,
                         fontFamily: 'cairo',
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
@@ -94,7 +103,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   padding: const EdgeInsets.only(right: 10, top: 4),
                   child: Iconify(
                     Uil.arrow_right,
-                    color: isValid ? primaryColor : greyColor,
+                    color: isValid && !isLogginIn ? primaryColor : greyColor,
                     size: 30,
                   ),
                 )

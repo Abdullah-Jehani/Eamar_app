@@ -21,6 +21,8 @@ class _LoginScreenState extends State<LoginScreen> {
       RegExp(r'^[\w+\-+=_]+(\.[\w+\-+=_]+)*@([\w\-+=_]+\.)+[a-zA-Z]{2,7}$');
   bool isValid = false;
   bool hidePass = true;
+  bool isLogginIn = false;
+
   validator() async {
     if (emailController.text.isNotEmpty &&
         emailRegex.hasMatch(emailController.text) &&
@@ -135,56 +137,70 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: size.height * .025,
               ),
               Padding(
-                padding: EdgeInsets.only(
-                    right: size.width * .050, left: size.width * .050),
-                child: TextButton(
-                  onPressed: () {
-                    validator();
-                    if (isValid == true) {
-                      Provider.of<AuthProvider>(context, listen: false).login({
-                        "email": emailController.text.toString(),
-                        "password": passwordController.text.toString()
-                      }, context).then((value) {
-                        if (value.first) {
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              CupertinoPageRoute(
-                                  builder: (context) => const HomeScreen()),
-                              (route) => false);
-                        } else {
-                          SnackBar snackBar = SnackBar(
-                            content: Text(value.last),
-                          );
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                        }
-                      });
-                    } else {
-                      SnackBar snackBar = const SnackBar(
-                        content: Text('Your input is invalid'),
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    }
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    height: size.height * .07,
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                      color: secondaryColor,
-                    ),
-                    child: Center(
-                      child: Text(
-                        'سجل الدخول',
-                        style: TextStyle(
-                            color: primaryColor,
-                            fontFamily: 'cairo',
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+                  padding: EdgeInsets.only(
+                      right: size.width * .050, left: size.width * .050),
+                  child: isLogginIn
+                      ? CircularProgressIndicator(
+                          color: primaryColor,
+                        )
+                      : TextButton(
+                          onPressed: () {
+                            validator();
+                            if (isValid == true) {
+                              setState(() {
+                                isLogginIn = true;
+                              });
+                              Provider.of<AuthProvider>(context, listen: false)
+                                  .login({
+                                "email": emailController.text.toString(),
+                                "password": passwordController.text.toString()
+                              }, context).then((value) {
+                                if (value.first) {
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      CupertinoPageRoute(
+                                          builder: (context) =>
+                                              const HomeScreen()),
+                                      (route) => false);
+                                } else {
+                                  setState(() {
+                                    isLogginIn = false;
+                                  });
+                                  SnackBar snackBar = SnackBar(
+                                    content: Text(value.last),
+                                  );
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
+                                }
+                              });
+                            } else {
+                              SnackBar snackBar = const SnackBar(
+                                content: Text('Your input is invalid'),
+                              );
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                            }
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: size.height * .07,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                              color: secondaryColor,
+                            ),
+                            child: Center(
+                              child: Text(
+                                'سجل الدخول',
+                                style: TextStyle(
+                                    color: primaryColor,
+                                    fontFamily: 'cairo',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        )),
               SizedBox(
                 height: size.height * .010,
               ),
