@@ -1,3 +1,4 @@
+import 'package:eamar_app/helpers/colors.dart';
 import 'package:eamar_app/providers/auth_provider.dart';
 import 'package:eamar_app/screens/auth/login_screen.dart';
 import 'package:eamar_app/screens/auth/splash_screen.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
           useMaterial3: true,
         ),
         home: const SplashScreen(),

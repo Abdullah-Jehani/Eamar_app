@@ -1,5 +1,6 @@
 import 'package:eamar_app/helpers/colors.dart';
 import 'package:eamar_app/providers/auth_provider.dart';
+import 'package:eamar_app/screens/secondary/privacy_policy.dart';
 import 'package:eamar_app/widgets/register/input_field_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +16,9 @@ class AccountDetails extends StatefulWidget {
 }
 
 class _AccountDetailsState extends State<AccountDetails> {
+  bool isChecked = false;
   DateTime dateTime = DateTime(2000, 2, 1);
   TextEditingController phoneNumberController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController dateController = TextEditingController();
 
@@ -26,18 +27,17 @@ class _AccountDetailsState extends State<AccountDetails> {
   bool isLogginIn = false;
 
   validator() async {
-    // if (userNameController.text.length > 2 &&
-    //     emailController.text.isNotEmpty &&
-    // phoneregex.hasMatch(phoneNumberController.text);
-    //     passwordController.text.length > 7 == true) {
-    //   setState(() {
-    //     isValid = true;
-    //   });
-    // } else {
-    //   setState(() {
-    //     isValid = false;
-    //   });
-    // }
+    if (isChecked &&
+        phoneregex.hasMatch(phoneNumberController.text) &&
+        addressController.text.length > 3) {
+      setState(() {
+        isValid = true;
+      });
+    } else {
+      setState(() {
+        isValid = false;
+      });
+    }
   }
 
   @override
@@ -57,26 +57,26 @@ class _AccountDetailsState extends State<AccountDetails> {
                     setState(() {
                       isLogginIn = true;
                     });
-                    Provider.of<AuthProvider>(context, listen: false).register({
-                      // "name": userNameController.text.toString(),
-                      "email": emailController.text.toString(),
-                      // "password": passwordController.text.toString()
-                    }, context).then((value) {
-                      // if (value.first) {
-                      //   Navigator.pushAndRemoveUntil(
-                      //     context,
-                      //     CupertinoPageRoute(
-                      //         builder: (context) => const AccountDetails()),
-                      //     (route) => false,
-                      //   );
-                      // } else {
-                      //   setState(() {
-                      //     isLogginIn = false;
-                      //   });
-                      //   SnackBar snackBar = SnackBar(content: Text(value.last));
-                      //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      // }
-                    });
+                    // Provider.of<AuthProvider>(context, listen: false).register({
+                    // "name": userNameController.text.toString(),
+                    // "email": emailController.text.toString(),
+                    // "password": passwordController.text.toString()
+                    // }, context).then((value) {
+                    // if (value.first) {
+                    //   Navigator.pushAndRemoveUntil(
+                    //     context,
+                    //     CupertinoPageRoute(
+                    //         builder: (context) => const AccountDetails()),
+                    //     (route) => false,
+                    //   );
+                    // } else {
+                    //   setState(() {
+                    //     isLogginIn = false;
+                    //   });
+                    //   SnackBar snackBar = SnackBar(content: Text(value.last));
+                    //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    // }
+                    // });
                   } else {
                     SnackBar snackBar = const SnackBar(
                       content: Text('Your input is invalid'),
@@ -87,7 +87,9 @@ class _AccountDetailsState extends State<AccountDetails> {
                 child: Text(
                   'التالي ',
                   style: TextStyle(
-                      color: isValid && !isLogginIn ? primaryColor : greyColor,
+                      color: isValid && isChecked && !isLogginIn
+                          ? primaryColor
+                          : greyColor,
                       fontFamily: 'cairo',
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
@@ -97,7 +99,9 @@ class _AccountDetailsState extends State<AccountDetails> {
                 padding: const EdgeInsets.only(right: 10, top: 4),
                 child: Iconify(
                   Uil.arrow_right,
-                  color: isValid && !isLogginIn ? primaryColor : greyColor,
+                  color: isValid && !isLogginIn && isChecked
+                      ? primaryColor
+                      : greyColor,
                   size: 30,
                 ),
               ),
@@ -236,7 +240,7 @@ class _AccountDetailsState extends State<AccountDetails> {
                                     color: secondaryColor,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(12))),
-                                height: size.height * .23,
+                                height: size.height * .21,
                                 child: CupertinoDatePicker(
                                   initialDateTime: dateTime,
                                   onDateTimeChanged: (DateTime newTime) {
@@ -250,7 +254,7 @@ class _AccountDetailsState extends State<AccountDetails> {
                                   use24hFormat: true,
                                   mode: CupertinoDatePickerMode
                                       .date, // Updated mode to dateAndTime
-                                  minimumDate: DateTime(1955),
+                                  minimumDate: DateTime(1945),
                                   maximumDate: DateTime(2006),
                                 ),
                               ),
@@ -281,6 +285,74 @@ class _AccountDetailsState extends State<AccountDetails> {
                               ],
                             ),
                           ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: size.height * .05,
+                      ),
+                      Directionality(
+                        textDirection: TextDirection.rtl,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding:
+                                    EdgeInsets.only(right: size.width * .090),
+                                child: RichText(
+                                  text: TextSpan(
+                                    style: const TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: 'cairo',
+                                      fontSize: 14,
+                                    ),
+                                    children: [
+                                      const TextSpan(
+                                        text:
+                                            'قد قرأت ووافقت على سياسة الخصوصية وشروط الخدمة  ',
+                                      ),
+                                      WidgetSpan(
+                                        alignment: PlaceholderAlignment.middle,
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            Navigator.push(
+                                              context,
+                                              CupertinoPageRoute(
+                                                builder: (context) =>
+                                                    const PrivacyPolicy(),
+                                              ),
+                                            );
+                                          },
+                                          child: Text(
+                                            'سياسة الخصوصية',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: primaryColor,
+                                              fontSize: 15,
+                                              fontFamily: 'cairo',
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: size.width * .040),
+                              child: Checkbox(
+                                activeColor: primaryColor,
+                                checkColor: Colors.white,
+                                side: BorderSide(color: textColor),
+                                value: isChecked,
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    isChecked = !isChecked;
+                                  });
+                                },
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],

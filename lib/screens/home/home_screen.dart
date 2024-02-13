@@ -1,3 +1,6 @@
+import 'package:eamar_app/screens/auth/register_screen.dart';
+import 'package:eamar_app/screens/auth/splash_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,8 +15,18 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Column(
-        children: [Text('dsdsds')],
+      body: Column(
+        children: [
+          const Text('dsdsds'),
+          TextButton(
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    CupertinoPageRoute(builder: (context) => RegisterScreen()),
+                    (route) => false);
+              },
+              child: const Text('Register'))
+        ],
       ),
     );
   }
