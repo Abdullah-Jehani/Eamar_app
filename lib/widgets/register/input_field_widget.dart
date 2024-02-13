@@ -1,6 +1,8 @@
 import 'package:eamar_app/helpers/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:iconify_flutter/iconify_flutter.dart';
+import 'package:iconify_flutter/icons/icons8.dart';
 
 class InputFieldWidget extends StatefulWidget {
   const InputFieldWidget({
@@ -67,7 +69,9 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
                 },
                 child: Icon(hidePass ? Icons.visibility_off : Icons.visibility),
               )
-            : Icon(widget.icon.icon),
+            : Icon(
+                widget.icon.icon,
+              ),
         errorMaxLines: 1,
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: greyColor),

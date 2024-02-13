@@ -1,7 +1,7 @@
 import 'package:eamar_app/helpers/colors.dart';
 import 'package:eamar_app/providers/auth_provider.dart';
 import 'package:eamar_app/screens/auth/login_screen.dart';
-import 'package:eamar_app/screens/home/home_screen.dart';
+import 'package:eamar_app/screens/details/account_details.dart';
 import 'package:eamar_app/widgets/register/input_field_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +20,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController userNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
   final emailRegex =
       RegExp(r'^[\w+\-+=_]+(\.[\w+\-+=_]+)*@([\w\-+=_]+\.)+[a-zA-Z]{2,7}$');
   bool isValid = false;
@@ -31,8 +30,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     if (userNameController.text.length > 2 &&
         emailController.text.isNotEmpty &&
         emailRegex.hasMatch(emailController.text) &&
-        passwordController.text.length > 7 &&
-        confirmPasswordController.text == passwordController.text) {
+        passwordController.text.length > 7 == true) {
       setState(() {
         isValid = true;
       });
@@ -50,70 +48,68 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Consumer<AuthProvider>(builder: (context, auth, _) {
       return Scaffold(
           appBar: AppBar(
-              shadowColor: Colors.white,
-              backgroundColor: Colors.white,
-              actions: [
-                GestureDetector(
-                  onTap: () {
-                    validator();
-                    if (isValid) {
-                      setState(() {
-                        isLogginIn = true;
-                      });
-                      Provider.of<AuthProvider>(context, listen: false)
-                          .register({
-                        "name": userNameController.text.toString(),
-                        "email": emailController.text.toString(),
-                        "password": passwordController.text.toString()
-                      }, context).then((value) {
-                        if (value.first) {
-                          Navigator.pushAndRemoveUntil(
-                            context,
-                            CupertinoPageRoute(
-                                builder: (context) => const HomeScreen()),
-                            (route) => false,
-                          );
-                        } else {
-                          setState(() {
-                            isLogginIn = false;
-                          });
-                          SnackBar snackBar =
-                              SnackBar(content: Text(value.last));
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                        }
-                      });
-                    } else {
-                      SnackBar snackBar = const SnackBar(
-                        content: Text('Your input is invalid'),
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    }
-                  },
-                  child: Text(
-                    'التالي ',
-                    style: TextStyle(
-                        color:
-                            isValid && !isLogginIn ? primaryColor : greyColor,
-                        fontFamily: 'cairo',
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
-                  ),
+            shadowColor: Colors.white,
+            backgroundColor: Colors.white,
+            actions: [
+              GestureDetector(
+                onTap: () {
+                  validator();
+                  if (isValid) {
+                    setState(() {
+                      isLogginIn = true;
+                    });
+                    Provider.of<AuthProvider>(context, listen: false).register({
+                      "name": userNameController.text.toString(),
+                      "email": emailController.text.toString(),
+                      "password": passwordController.text.toString()
+                    }, context).then((value) {
+                      if (value.first) {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => const AccountDetails()),
+                          (route) => false,
+                        );
+                      } else {
+                        setState(() {
+                          isLogginIn = false;
+                        });
+                        SnackBar snackBar = SnackBar(content: Text(value.last));
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      }
+                    });
+                  } else {
+                    SnackBar snackBar = const SnackBar(
+                      content: Text('Your input is invalid'),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  }
+                },
+                child: Text(
+                  'التالي ',
+                  style: TextStyle(
+                      color: isValid && !isLogginIn ? primaryColor : greyColor,
+                      fontFamily: 'cairo',
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 10, top: 4),
-                  child: Iconify(
-                    Uil.arrow_right,
-                    color: isValid && !isLogginIn ? primaryColor : greyColor,
-                    size: 30,
-                  ),
-                )
-              ]),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 10, top: 4),
+                child: Iconify(
+                  Uil.arrow_right,
+                  color: isValid && !isLogginIn ? primaryColor : greyColor,
+                  size: 30,
+                ),
+              ),
+            ],
+          ),
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 SizedBox(
-                  height: size.height * .005,
+                  height: size.height * .03,
                 ),
                 Padding(
                   padding: EdgeInsets.only(right: size.width * 0.090),
@@ -123,7 +119,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       color: primaryColor,
                       fontFamily: 'cairo',
                       fontWeight: FontWeight.bold,
-                      fontSize: 22,
+                      fontSize: 26,
                     ),
                     textAlign: TextAlign.right,
                   ),
@@ -136,12 +132,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: Text(
                     'قم بادخل بياناتك الشخصية',
                     style: TextStyle(
-                        color: textColor, fontSize: 16, fontFamily: 'cairo'),
+                        color: textColor,
+                        fontSize: 16,
+                        fontFamily: 'cairo',
+                        fontWeight: FontWeight.normal),
                     textAlign: TextAlign.right,
                   ),
                 ),
                 SizedBox(
-                  height: size.height * .040,
+                  height: size.height * .05,
                 ),
                 Form(
                   onChanged: () {
@@ -175,7 +174,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               isPassword: false,
                               icon: const Icon(Icons.person))),
                       SizedBox(
-                        height: size.height * .025,
+                        height: size.height * .05,
                       ),
                       Padding(
                         padding: EdgeInsets.only(right: size.width * 0.090),
@@ -202,7 +201,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               icon: const Icon(Icons.email),
                               text: 'johndoe@gmail.com')),
                       SizedBox(
-                        height: size.height * .025,
+                        height: size.height * .05,
                       ),
                       Padding(
                         padding: EdgeInsets.only(right: size.width * 0.090),
@@ -229,37 +228,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               icon: const Icon(Icons.visibility),
                               text: 'ثماني خانات علي الاقل')),
                       SizedBox(
-                        height: size.height * .025,
+                        height: size.height * .040,
                       ),
                       Padding(
                         padding: EdgeInsets.only(right: size.width * 0.090),
                         child: const Align(
                           alignment: Alignment.topRight,
-                          child: Text(
-                            'اعد ادخال كلمة المرور',
-                            style: TextStyle(
-                              fontFamily: 'cairo',
-                              fontSize: 15,
-                            ),
-                          ),
                         ),
                       ),
-                      SizedBox(
-                        height: size.height * .015,
-                      ),
-                      Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: size.width * .070),
-                          child: InputFieldWidget(
-                              controller: confirmPasswordController,
-                              isPassword: true,
-                              icon: const Icon(Icons.visibility),
-                              text: 'اعد ادخال كلمة المرور')),
                     ],
                   ),
                 ),
                 SizedBox(
-                  height: size.height * .040,
+                  height: size.height * .010,
                 ),
                 Align(
                   alignment: Alignment.center,
@@ -268,13 +249,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       const Text(
                         'لديك حساب بالفعل ؟',
                         style: TextStyle(
-                          color: Colors.black,
-                          fontFamily: 'cairo',
-                          fontSize: 14,
-                        ),
+                            color: Colors.black,
+                            fontFamily: 'cairo',
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal),
                       ),
                       SizedBox(
-                        height: size.height * .009,
+                        height: size.height * .03,
                       ),
                       TextButton(
                           onPressed: () {
