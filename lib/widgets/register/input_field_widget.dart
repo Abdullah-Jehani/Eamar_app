@@ -1,8 +1,6 @@
 import 'package:eamar_app/helpers/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:iconify_flutter/iconify_flutter.dart';
-import 'package:iconify_flutter/icons/icons8.dart';
 
 class InputFieldWidget extends StatefulWidget {
   const InputFieldWidget({

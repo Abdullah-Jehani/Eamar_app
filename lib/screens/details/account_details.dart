@@ -314,13 +314,12 @@ class _AccountDetailsState extends State<AccountDetails> {
                                         alignment: PlaceholderAlignment.middle,
                                         child: GestureDetector(
                                           onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              CupertinoPageRoute(
-                                                builder: (context) =>
-                                                    const PrivacyPolicy(),
-                                              ),
-                                            );
+                                            Navigator.pushAndRemoveUntil(
+                                                context,
+                                                CupertinoPageRoute(
+                                                    builder: (context) =>
+                                                        const PrivacyPolicy()),
+                                                (route) => false);
                                           },
                                           child: Text(
                                             'سياسة الخصوصية',
