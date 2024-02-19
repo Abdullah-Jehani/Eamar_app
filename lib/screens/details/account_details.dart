@@ -1,5 +1,6 @@
 import 'package:eamar_app/helpers/colors.dart';
 import 'package:eamar_app/providers/auth_provider.dart';
+import 'package:eamar_app/screens/details/account_photo.dart';
 import 'package:eamar_app/screens/secondary/privacy_policy.dart';
 import 'package:eamar_app/widgets/register/input_field_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -57,6 +58,11 @@ class _AccountDetailsState extends State<AccountDetails> {
                     setState(() {
                       isLogginIn = true;
                     });
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => AccountPhoto()),
+                        (route) => false);
                     // Provider.of<AuthProvider>(context, listen: false).register({
                     // "name": userNameController.text.toString(),
                     // "email": emailController.text.toString(),

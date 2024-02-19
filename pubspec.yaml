@@ -39,6 +39,7 @@ dependencies:
   provider:
   iconify_flutter:
   http:
+  image_picker:
 
 dev_dependencies:
   flutter_test:

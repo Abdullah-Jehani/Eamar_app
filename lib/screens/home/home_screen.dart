@@ -1,4 +1,5 @@
 import 'package:eamar_app/screens/auth/register_screen.dart';
+import 'package:eamar_app/screens/details/account_photo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.pushAndRemoveUntil(
                     context,
                     CupertinoPageRoute(
-                        builder: (context) => const RegisterScreen()),
+                        builder: (context) => const AccountPhoto()),
                     (route) => false);
               },
               child: const Text('Register'))
