@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:eamar_app/helpers/colors.dart';
+import 'package:eamar_app/screens/secondary/finish_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
@@ -47,13 +48,33 @@ class _AccountPhotoState extends State<AccountPhoto> {
               )
             : const Row(),
         actions: [
-          Text(
-            _image != null ? 'التالي' : 'تخطي في الوقت الراهن ',
-            style: TextStyle(
-                color: primaryColor,
-                fontFamily: 'cairo',
-                fontSize: 18,
-                fontWeight: FontWeight.bold),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      const FinishScreen(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    return FadeTransition(
+                      opacity: animation,
+                      child: child,
+                    );
+                  },
+                  transitionDuration: const Duration(milliseconds: 90),
+                ),
+                (route) => false,
+              );
+            },
+            child: Text(
+              _image != null ? 'التالي' : 'تخطي في الوقت الراهن ',
+              style: TextStyle(
+                  color: primaryColor,
+                  fontFamily: 'cairo',
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(right: 10, top: 4),
@@ -100,8 +121,9 @@ class _AccountPhotoState extends State<AccountPhoto> {
             ),
             GestureDetector(
               onTap: () async {
-                final XFile? image =
-                    await _picker.pickImage(source: ImageSource.gallery);
+                final XFile? image = await _picker.pickImage(
+                  source: ImageSource.gallery,
+                );
                 if (image != null) {
                   setState(() {
                     _image = File(image.path);

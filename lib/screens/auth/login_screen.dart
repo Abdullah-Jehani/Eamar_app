@@ -3,7 +3,6 @@ import 'package:eamar_app/providers/auth_provider.dart';
 import 'package:eamar_app/screens/auth/register_screen.dart';
 import 'package:eamar_app/screens/home/home_screen.dart';
 import 'package:eamar_app/widgets/register/input_field_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -157,11 +156,23 @@ class _LoginScreenState extends State<LoginScreen> {
                               }, context).then((value) {
                                 if (value.first) {
                                   Navigator.pushAndRemoveUntil(
-                                      context,
-                                      CupertinoPageRoute(
-                                          builder: (context) =>
-                                              const HomeScreen()),
-                                      (route) => false);
+                                    context,
+                                    PageRouteBuilder(
+                                      pageBuilder: (context, animation,
+                                              secondaryAnimation) =>
+                                          const HomeScreen(),
+                                      transitionsBuilder: (context, animation,
+                                          secondaryAnimation, child) {
+                                        return FadeTransition(
+                                          opacity: animation,
+                                          child: child,
+                                        );
+                                      },
+                                      transitionDuration:
+                                          const Duration(milliseconds: 90),
+                                    ),
+                                    (route) => false,
+                                  );
                                 } else {
                                   setState(() {
                                     isLogginIn = false;
@@ -292,11 +303,21 @@ class _LoginScreenState extends State<LoginScreen> {
                     right: size.width * .050, left: size.width * .050),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        CupertinoPageRoute(
-                            builder: (context) => const RegisterScreen()),
-                        (route) => false);
+                    Navigator.push(
+                      context,
+                      PageRouteBuilder(
+                        pageBuilder: (context, animation, secondaryAnimation) =>
+                            const RegisterScreen(),
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                          return FadeTransition(
+                            opacity: animation,
+                            child: child,
+                          );
+                        },
+                        transitionDuration: const Duration(milliseconds: 90),
+                      ),
+                    );
                   },
                   child: Container(
                     width: double.infinity,

@@ -1,6 +1,5 @@
 import 'package:eamar_app/helpers/colors.dart';
 import 'package:eamar_app/screens/details/account_details.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/uil.dart';

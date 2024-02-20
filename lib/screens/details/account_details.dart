@@ -17,7 +17,7 @@ class AccountDetails extends StatefulWidget {
 }
 
 class _AccountDetailsState extends State<AccountDetails> {
-  bool isChecked = false;
+  bool isChecked = true;
   DateTime dateTime = DateTime(2000, 2, 1);
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController addressController = TextEditingController();
@@ -59,10 +59,21 @@ class _AccountDetailsState extends State<AccountDetails> {
                       isLogginIn = true;
                     });
                     Navigator.pushAndRemoveUntil(
-                        context,
-                        CupertinoPageRoute(
-                            builder: (context) => AccountPhoto()),
-                        (route) => false);
+                      context,
+                      PageRouteBuilder(
+                        pageBuilder: (context, animation, secondaryAnimation) =>
+                            const AccountPhoto(),
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                          return FadeTransition(
+                            opacity: animation,
+                            child: child,
+                          );
+                        },
+                        transitionDuration: const Duration(milliseconds: 90),
+                      ),
+                      (route) => false,
+                    );
                     // Provider.of<AuthProvider>(context, listen: false).register({
                     // "name": userNameController.text.toString(),
                     // "email": emailController.text.toString(),
@@ -344,7 +355,7 @@ class _AccountDetailsState extends State<AccountDetails> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(left: size.width * .040),
+                              padding: EdgeInsets.only(left: size.width * .070),
                               child: Checkbox(
                                 activeColor: primaryColor,
                                 checkColor: Colors.white,

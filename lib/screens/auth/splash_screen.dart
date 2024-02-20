@@ -16,9 +16,20 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Timer(const Duration(seconds: 5), () {
       Navigator.pushAndRemoveUntil(
-          context,
-          CupertinoPageRoute(builder: (context) => const ScreenRouter()),
-          (route) => false);
+        context,
+        PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              const ScreenRouter(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
+          transitionDuration: const Duration(milliseconds: 90),
+        ),
+        (route) => false,
+      );
     });
     super.initState();
   }

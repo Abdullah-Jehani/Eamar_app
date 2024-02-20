@@ -32,10 +32,21 @@ class _BoardScreenTwoState extends State<BoardScreenTwo> {
               onClickNext: () {
                 setState(() {
                   Navigator.pushAndRemoveUntil(
-                      context,
-                      CupertinoPageRoute(
-                          builder: (context) => const BoardScreenThree()),
-                      (route) => false);
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation, secondaryAnimation) =>
+                          const BoardScreenThree(),
+                      transitionsBuilder:
+                          (context, animation, secondaryAnimation, child) {
+                        return FadeTransition(
+                          opacity: animation,
+                          child: child,
+                        );
+                      },
+                      transitionDuration: const Duration(milliseconds: 90),
+                    ),
+                    (route) => false,
+                  );
                 });
               },
               onClickSkip: () {

@@ -36,10 +36,21 @@ class _BoardScreenThreeState extends State<BoardScreenThree> {
 
                 auth.isFirstTime == false;
                 Navigator.pushAndRemoveUntil(
-                    context,
-                    CupertinoPageRoute(
-                        builder: (context) => const RegisterScreen()),
-                    (route) => false);
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        const RegisterScreen(),
+                    transitionsBuilder:
+                        (context, animation, secondaryAnimation, child) {
+                      return FadeTransition(
+                        opacity: animation,
+                        child: child,
+                      );
+                    },
+                    transitionDuration: const Duration(milliseconds: 90),
+                  ),
+                  (route) => false,
+                );
               });
             },
             onClickSkip: () {

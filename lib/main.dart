@@ -39,7 +39,6 @@ class ScreenRouter extends StatefulWidget {
 
 class _ScreenRouterState extends State<ScreenRouter> {
   @override
-  // lifecycle hooks that to be built when widget is called for first time
   void initState() {
     Provider.of<AuthProvider>(context, listen: false).initAuthentication();
     Provider.of<AuthProvider>(context, listen: false).checkFirstTime();

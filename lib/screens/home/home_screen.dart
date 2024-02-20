@@ -1,4 +1,3 @@
-import 'package:eamar_app/screens/auth/register_screen.dart';
 import 'package:eamar_app/screens/details/account_photo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

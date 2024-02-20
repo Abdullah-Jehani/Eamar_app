@@ -3,7 +3,6 @@ import 'package:eamar_app/providers/auth_provider.dart';
 import 'package:eamar_app/screens/auth/login_screen.dart';
 import 'package:eamar_app/screens/details/account_details.dart';
 import 'package:eamar_app/widgets/register/input_field_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/uil.dart';
@@ -66,8 +65,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       if (value.first) {
                         Navigator.pushAndRemoveUntil(
                           context,
-                          CupertinoPageRoute(
-                              builder: (context) => const AccountDetails()),
+                          PageRouteBuilder(
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) =>
+                                    const AccountDetails(),
+                            transitionsBuilder: (context, animation,
+                                secondaryAnimation, child) {
+                              return FadeTransition(
+                                opacity: animation,
+                                child: child,
+                              );
+                            },
+                            transitionDuration:
+                                const Duration(milliseconds: 90),
+                          ),
                           (route) => false,
                         );
                       } else {
@@ -261,8 +272,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              CupertinoPageRoute(
-                                  builder: (context) => const LoginScreen()),
+                              PageRouteBuilder(
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) =>
+                                        const LoginScreen(),
+                                transitionsBuilder: (context, animation,
+                                    secondaryAnimation, child) {
+                                  return FadeTransition(
+                                    opacity: animation,
+                                    child: child,
+                                  );
+                                },
+                                transitionDuration:
+                                    const Duration(milliseconds: 90),
+                              ),
                             );
                           },
                           child: Container(
