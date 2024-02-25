@@ -41,6 +41,12 @@ dependencies:
   http:
   image_picker:
   confetti: ^0.7.0
+  google_nav_bar:
+  icony: ^1.0.5
+  unicons: ^2.1.1
+  font_awesome_flutter: ^10.7.0
+  icon_forest: ^1.1.8
+  line_icons: ^2.0.3
 
 dev_dependencies:
   flutter_test:

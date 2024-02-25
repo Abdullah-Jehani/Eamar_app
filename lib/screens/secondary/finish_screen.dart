@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:confetti/confetti.dart';
 import 'package:eamar_app/helpers/colors.dart';
-import 'package:eamar_app/screens/home/home_screen.dart';
+import 'package:eamar_app/screens/main/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class FinishScreen extends StatefulWidget {

@@ -3,7 +3,7 @@ import 'package:eamar_app/providers/auth_provider.dart';
 import 'package:eamar_app/screens/auth/login_screen.dart';
 import 'package:eamar_app/screens/auth/splash_screen.dart';
 import 'package:eamar_app/screens/boarding/board_screen_one.dart';
-import 'package:eamar_app/screens/home/home_screen.dart';
+import 'package:eamar_app/screens/secondary/tabs_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -57,7 +57,7 @@ class _ScreenRouterState extends State<ScreenRouter> {
           : auth.isFirstTime
               ? const BoardScreenOne()
               : auth.isAuthenticated!
-                  ? const HomeScreen()
+                  ? const TabsScreen()
                   : const LoginScreen();
     });
   }
