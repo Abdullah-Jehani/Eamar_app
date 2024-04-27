@@ -41,6 +41,7 @@ class _FinishScreenState extends State<FinishScreen> {
     controller.play();
   }
 
+  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 

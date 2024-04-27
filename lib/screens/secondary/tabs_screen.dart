@@ -18,48 +18,46 @@ class TabsScreen extends StatefulWidget {
 class _TabsScreenState extends State<TabsScreen> {
   int currentIndex = 0;
   final tabs = const [
-    SettingsScreen(),
-    CenterScreen(),
     HomeScreen(),
+    CenterScreen(),
+    SettingsScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: tabs[currentIndex],
-      bottomNavigationBar: Container(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-          child: GNav(
-            backgroundColor: Colors.white,
-            color: Colors.black,
-            activeColor: primaryColor,
-            onTabChange: (index) {
-              setState(() {
-                currentIndex = index;
-              });
-            },
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-            tabs: [
-              GButton(
-                icon: UniconsLine.setting,
-                iconColor: textColor,
-                iconSize: 30,
-                iconActiveColor: primaryColor, // Provide a valid color value
-              ),
-              GButton(
-                icon: CupertinoIcons.news, iconColor: textColor,
-                iconSize: 32,
-                iconActiveColor: primaryColor, // Provide a valid color value
-              ),
-              GButton(
-                icon: LineIcons.home,
-                iconColor: textColor,
-                iconSize: 30,
-                iconActiveColor: primaryColor, // Provide a valid color value
-              ),
-            ],
-          ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        child: GNav(
+          backgroundColor: Colors.white,
+          color: Colors.black,
+          activeColor: primaryColor,
+          onTabChange: (index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+          tabs: [
+            GButton(
+              icon: LineIcons.home,
+              iconColor: textColor,
+              iconSize: 30,
+              iconActiveColor: primaryColor, // Provide a valid color value
+            ),
+            GButton(
+              icon: CupertinoIcons.news, iconColor: textColor,
+              iconSize: 32,
+              iconActiveColor: primaryColor, // Provide a valid color value
+            ),
+            GButton(
+              icon: UniconsLine.setting,
+              iconColor: textColor,
+              iconSize: 30,
+              iconActiveColor: primaryColor, // Provide a valid color value
+            ),
+          ],
         ),
       ),
     );

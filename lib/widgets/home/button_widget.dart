@@ -1,14 +1,13 @@
 import 'package:eamar_app/helpers/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ButtonWidget extends StatefulWidget {
-  const ButtonWidget({super.key, required this.text, required this.route});
+  const ButtonWidget({super.key, required this.text, this.route});
 
   @override
   State<ButtonWidget> createState() => _ButtonWidgetState();
   final String text;
-  final Widget route;
+  final Widget? route;
 }
 
 class _ButtonWidgetState extends State<ButtonWidget> {
@@ -17,11 +16,11 @@ class _ButtonWidgetState extends State<ButtonWidget> {
     Size size = MediaQuery.of(context).size;
     return TextButton(
       onPressed: () {
-        Navigator.pushAndRemoveUntil(
+        Navigator.push(
           context,
           PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
-                widget.route,
+                widget.route!,
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
               return FadeTransition(
@@ -29,12 +28,14 @@ class _ButtonWidgetState extends State<ButtonWidget> {
                 child: child,
               );
             },
-            transitionDuration: const Duration(milliseconds: 90),
+            transitionDuration: const Duration(milliseconds: 01),
           ),
-          (route) => false,
         );
       },
       style: ButtonStyle(
+        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+          const EdgeInsets.symmetric(horizontal: 14), // Add the desired padding
+        ),
         backgroundColor: MaterialStateProperty.all<Color>(primaryColor),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
@@ -44,7 +45,6 @@ class _ButtonWidgetState extends State<ButtonWidget> {
       ),
       child: SizedBox(
         height: size.height * 0.034,
-        width: size.width * 0.4,
         child: Center(
           child: Text(
             widget.text,

@@ -75,24 +75,24 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
                   color: primaryColor,
                   fontFamily: 'cairo',
                   fontWeight: FontWeight.bold,
-                  fontSize: 16),
+                  fontSize: 17),
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: size.width * .06, vertical: size.height * .035),
+                  horizontal: size.width * .05, vertical: size.height * .035),
               child: Column(
                 children: [
                   const Text(
                     textAlign: TextAlign.right,
                     'يُطلب من مستخدمي التطبيق تقديم معلومات دقيقة وصادقة عند تقديم التقارير أو التعامل مع خدمات التطبيق. تقع على عاتق المستخدم مسؤولية التأكد من أن البيانات التي يقدمها، بما في ذلك المعلومات الشخصية والتفاصيل المتعلقة بالمشكلات المبلغ عنها، صحيحة وحديثة.',
                     style: TextStyle(
-                        color: Colors.black, fontFamily: 'cairo', fontSize: 14),
+                        color: Colors.black, fontFamily: 'cairo', fontSize: 15),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: size.height * .035),
                     child: const Text(
                       'باستخدام التطبيق، يقر المستخدمون بأن دقة وسلامة المعلومات المبلغ عنها أمر بالغ الأهمية لحل فعال لتحديات المجتمع. يجب على المستخدمين بذل العناية في التحقق من المعلومات التي يقدمونها بأفضل ما لديهم من معرفة وقدرة.',
-                      style: TextStyle(fontFamily: 'cairo', fontSize: 14),
+                      style: TextStyle(fontFamily: 'cairo', fontSize: 15),
                       textAlign: TextAlign.right,
                     ),
                   ),
@@ -100,7 +100,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
                     padding: EdgeInsets.only(top: size.height * .035),
                     child: const Text(
                       'افهم أن تقديم معلومات غير دقيقة أو خاطئة قد يعيق عملية الحل ويعوق الجهود المبذولة لمعالجة المشكلات المبلغ عنها على الفور. يحتفظ التطبيق بالحق في اتخاذ الإجراء المناسب، بما في ذلك على سبيل المثال لا الحصر تقديم التقارير التي يتبين أنها مضللة أو غير دقيقة عن عمد.',
-                      style: TextStyle(fontFamily: 'cairo', fontSize: 14),
+                      style: TextStyle(fontFamily: 'cairo', fontSize: 15),
                       textAlign: TextAlign.right,
                     ),
                   )

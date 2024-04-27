@@ -40,9 +40,9 @@ class ScreenRouter extends StatefulWidget {
 class _ScreenRouterState extends State<ScreenRouter> {
   @override
   void initState() {
+    const TabsScreen();
     Provider.of<AuthProvider>(context, listen: false).initAuthentication();
     Provider.of<AuthProvider>(context, listen: false).checkFirstTime();
-    const TabsScreen();
     super.initState();
   }
 
