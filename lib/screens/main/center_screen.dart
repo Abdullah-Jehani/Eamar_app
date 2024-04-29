@@ -24,7 +24,13 @@ class _CenterScreenState extends State<CenterScreen> {
       'issueType': 'البنية التحتية للطرق',
       "issueDetails": 'تشققات الطريق',
       "days": 122
-    }
+    },
+    {
+      "id": 3,
+      'issueType': 'البنية التحتية للطرق',
+      "issueDetails": 'تشققات الطريق',
+      "days": 13
+    },
   ];
   List<Map<String, dynamic>> foundReports = [];
   @override
