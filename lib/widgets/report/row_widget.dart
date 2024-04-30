@@ -13,7 +13,7 @@ class RowWidget extends StatefulWidget {
 class _RowWidgetState extends State<RowWidget> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    // Size size = MediaQuery.of(context).size;
     return Row(
       textDirection: TextDirection.rtl,
       children: [

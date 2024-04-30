@@ -2,9 +2,7 @@ import 'package:eamar_app/helpers/colors.dart';
 import 'package:eamar_app/widgets/helper/close_widget.dart';
 import 'package:eamar_app/widgets/helper/report_status.dart';
 import 'package:eamar_app/widgets/report/row_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ReportDetails extends StatefulWidget {
   const ReportDetails({super.key});

@@ -10,3 +10,6 @@ Color danger = const Color.fromARGB(255, 247, 17, 1);
 Color darkBlue = const Color(0xFF002851);
 Color success = const Color(0xFF066839);
 Color caution = const Color(0xFFF58800);
+Color textColor2 = const Color(0xFF8296AA);
+Color lineColor = const Color(0xFFF5F5F5);
+Color containerColor = const Color(0xFFF6F7FE);

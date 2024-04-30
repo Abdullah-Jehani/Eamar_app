@@ -1,6 +1,6 @@
 import 'package:eamar_app/helpers/colors.dart';
 import 'package:eamar_app/screens/main/center_screen.dart';
-import 'package:eamar_app/screens/reports/report_details.dart';
+import 'package:eamar_app/screens/secondary/tabs_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,7 @@ class _CloseWidgetState extends State<CloseWidget> {
       onTap: () {
         Navigator.pushAndRemoveUntil(
             context,
-            CupertinoPageRoute(builder: (context) => const CenterScreen()),
+            CupertinoPageRoute(builder: (context) => const TabsScreen()),
             (route) => false);
       },
       child: Container(
