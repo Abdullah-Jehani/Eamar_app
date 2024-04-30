@@ -1,11 +1,12 @@
 import 'package:eamar_app/helpers/colors.dart';
+import 'package:eamar_app/screens/reports/report_details.dart';
 import 'package:eamar_app/widgets/center/card_widget.dart';
 import 'package:eamar_app/widgets/home/button_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class CenterScreen extends StatefulWidget {
-  const CenterScreen({Key? key});
+  const CenterScreen({super.key, Key? key2});
 
   @override
   State<CenterScreen> createState() => _CenterScreenState();
@@ -131,37 +132,52 @@ class _CenterScreenState extends State<CenterScreen> {
                     ),
                     Flexible(
                         child: foundReports.isNotEmpty
-                            ? ListView.builder(
-                                itemCount: foundReports
-                                    .length, // Set the number of items in the list to 1
-                                itemBuilder: (context, index) {
-                                  return ReportCard(
-                                    key: ValueKey(foundReports[index]["id"]),
-                                    issueType: foundReports[index]["issueType"],
-                                    issueDetail: foundReports[index]
-                                        ["issueDetails"],
-                                    days: foundReports[index]["days"],
-                                  );
+                            ? GestureDetector(
+                                onTap: () {
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      CupertinoPageRoute(
+                                          builder: (context) =>
+                                              const ReportDetails()),
+                                      (route) => false);
                                 },
+                                child: ListView.builder(
+                                  itemCount: foundReports
+                                      .length, // Set the number of items in the list to 1
+                                  itemBuilder: (context, index) {
+                                    return ReportCard(
+                                      key: ValueKey(foundReports[index]["id"]),
+                                      issueType: foundReports[index]
+                                          ["issueType"],
+                                      issueDetail: foundReports[index]
+                                          ["issueDetails"],
+                                      days: foundReports[index]["days"],
+                                    );
+                                  },
+                                ),
                               )
-                            : Align(
-                                alignment: Alignment.center,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Image.asset(
-                                      'assets/icons/NoResultsFounded.png',
-                                      width: size.width * .6,
-                                    ),
-                                    Text(
-                                      'عذرا , يبدو انه لايوجد نتائج لبحثك',
-                                      style: TextStyle(
-                                          color: textColor,
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'cairo'),
-                                    )
-                                  ],
+                            : Padding(
+                                padding:
+                                    EdgeInsets.only(bottom: size.height * .2),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        'assets/icons/NoResultsFounded.png',
+                                        width: size.width * .6,
+                                      ),
+                                      Text(
+                                        'عذرا , يبدو انه لايوجد نتائج لبحثك',
+                                        style: TextStyle(
+                                            color: textColor,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'cairo'),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               )),
                   ],

@@ -9,6 +9,7 @@ class FinishScreen extends StatefulWidget {
   const FinishScreen({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _FinishScreenState createState() => _FinishScreenState();
 }
 

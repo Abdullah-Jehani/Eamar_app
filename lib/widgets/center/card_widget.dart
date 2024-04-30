@@ -1,6 +1,5 @@
-import 'dart:ui';
-
 import 'package:eamar_app/helpers/colors.dart';
+import 'package:eamar_app/screens/reports/report_details.dart';
 import 'package:eamar_app/widgets/home/button_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -86,6 +85,7 @@ class _ReportCardState extends State<ReportCard> {
                       height: size.height * 0.025,
                     ),
                     const ButtonWidget(
+                      route: ReportDetails(),
                       text: 'عرض بيانات البلاغ',
                     ),
                   ],
