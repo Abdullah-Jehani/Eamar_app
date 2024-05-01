@@ -158,7 +158,7 @@ class _CenterScreenState extends State<CenterScreen> {
                               )
                             : Padding(
                                 padding:
-                                    EdgeInsets.only(bottom: size.height * .2),
+                                    EdgeInsets.only(bottom: size.height * .1),
                                 child: Align(
                                   alignment: Alignment.center,
                                   child: Column(

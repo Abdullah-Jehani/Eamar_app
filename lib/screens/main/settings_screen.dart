@@ -1,8 +1,9 @@
 import 'package:eamar_app/helpers/colors.dart';
+import 'package:eamar_app/screens/profile/profile_screen.dart';
 import 'package:eamar_app/widgets/settings/setting_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:iconify_flutter/iconify_flutter.dart';
-import 'package:iconify_flutter/icons/ooui.dart';
+import 'package:flutter/widgets.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -82,9 +83,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
             SizedBox(
               height: size.height * .03,
             ),
-            const SettingWidget(
-              img: 'assets/images/home/profileIcon.png',
-              hradline: 'البيانات الشخصية',
+            GestureDetector(
+              onTap: () {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    CupertinoPageRoute(
+                        builder: (context) => const ProfileScreen()),
+                    (route) => false);
+              },
+              child: const SettingWidget(
+                img: 'assets/images/home/profileIcon.png',
+                hradline: 'البيانات الشخصية',
+              ),
             ),
             SizedBox(
               height: size.height * .03,
