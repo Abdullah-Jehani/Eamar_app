@@ -1,6 +1,7 @@
 import 'package:eamar_app/helpers/colors.dart';
 import 'package:eamar_app/screens/main/center_screen.dart';
 import 'package:eamar_app/screens/main/settings_screen.dart';
+import 'package:eamar_app/screens/reportSubmittion/first_screen.dart';
 import 'package:eamar_app/widgets/home/card_widget.dart';
 import 'package:eamar_app/widgets/home/headline_widget.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: size.height * .008,
               ),
               const CardWidget(
-                route: CenterScreen(),
+                route: FirstScreen(),
                 head: 'قم بالتبليغ عن مظاهر التشوه البصري',
                 tail: 'ساهم في تحسين المشهد الحضاري للمدينه',
                 textButton: 'ارفع بلاغ',
