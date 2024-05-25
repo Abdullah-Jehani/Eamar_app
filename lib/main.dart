@@ -1,5 +1,6 @@
 import 'package:eamar_app/helpers/colors.dart';
 import 'package:eamar_app/providers/auth_provider.dart';
+import 'package:eamar_app/providers/report_provider.dart';
 import 'package:eamar_app/screens/auth/login_screen.dart';
 import 'package:eamar_app/screens/auth/splash_screen.dart';
 import 'package:eamar_app/screens/boarding/board_screen_one.dart';
@@ -17,7 +18,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (context) => AuthProvider())],
+      providers: [
+        ChangeNotifierProvider(create: (context) => AuthProvider()),
+        ChangeNotifierProvider(create: (context) => ReportProvider())
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(

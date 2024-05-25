@@ -1,19 +1,24 @@
 import 'package:eamar_app/helpers/colors.dart';
+import 'package:eamar_app/providers/report_provider.dart';
 import 'package:eamar_app/screens/reportSubmittion/camera_screen.dart';
 import 'package:eamar_app/widgets/helper/close_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart'; // Import provider
 
+// widget of card report
 class ReportCardWidget extends StatefulWidget {
   const ReportCardWidget({
     super.key,
     required this.image,
     required this.text,
+    required this.id, // Add id to the widget
     required this.onTap,
     required this.isSelected,
   });
   final String image;
   final String text;
+  final int id; // Add id to the widget
   final VoidCallback onTap;
   final bool isSelected;
 
@@ -92,18 +97,32 @@ class FirstScreen extends StatefulWidget {
   State<FirstScreen> createState() => _FirstScreenState();
 }
 
-List<Map<String, String>> reports = [
-  {'image': 'assets/images/home/road.png', 'text': 'الطرق والشوارع'},
+List<Map<String, dynamic>> reports = [
   {
+    'id': 1,
+    'image': 'assets/images/home/road.png',
+    'text': 'الطرق والشوارع',
+  },
+  {
+    'id': 2,
     'image': 'assets/images/home/light.png',
-    'text': ' الانارة والمرافق الخدمية '
+    'text': ' الانارة والمرافق الخدمية ',
   },
   {
+    'id': 3,
     'image': 'assets/images/home/building.png',
-    'text': ' المباني والبنايات قيد الانشاء'
+    'text': ' المباني والبنايات قيد الانشاء',
   },
-  {'image': 'assets/images/home/public.png', 'text': 'المظهر العام'},
-  {'image': 'assets/images/home/store.png', 'text': 'الاسواق والمتاجر'},
+  {
+    'id': 4,
+    'image': 'assets/images/home/public.png',
+    'text': 'المظهر العام',
+  },
+  {
+    'id': 5,
+    'image': 'assets/images/home/store.png',
+    'text': 'الاسواق والمتاجر',
+  },
 ];
 
 class _FirstScreenState extends State<FirstScreen> {
@@ -172,7 +191,14 @@ class _FirstScreenState extends State<FirstScreen> {
                     return ReportCardWidget(
                       image: reports[index]['image']!,
                       text: reports[index]['text']!,
+                      id: reports[index]['id'], // Pass id to the widget
                       onTap: () {
+                        // Get the ReportProvider instance from context
+                        final reportProvider =
+                            Provider.of<ReportProvider>(context, listen: false);
+                        // Update the selected id
+                        reportProvider.selectedId = reports[index]['id'];
+
                         setState(() {
                           selectedIndex = index;
                         });
@@ -200,7 +226,7 @@ class _FirstScreenState extends State<FirstScreen> {
                   color: textColor, fontFamily: 'cairo', fontSize: 12),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
         ],
