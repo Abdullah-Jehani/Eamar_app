@@ -51,7 +51,7 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
       textAlign: TextAlign.right,
       decoration: InputDecoration(
         filled: true,
-        fillColor: fillInputColor,
+        fillColor: const Color(0xFFF8F8F8),
         hintText: widget.text,
         hintStyle: TextStyle(
           color: textColor,

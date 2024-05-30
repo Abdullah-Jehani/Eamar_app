@@ -4,6 +4,11 @@ class ReportProvider with ChangeNotifier {
   // definitions
   int? selectedReportId;
   int? selectedClassificationId;
+  double lat = 0.0;
+  double long = 0.0;
+  String? location;
+  String? imagePath; // Variable to store the image path
+
   // seetters
   set selectedId(int? value) {
     selectedReportId = value;
@@ -12,6 +17,12 @@ class ReportProvider with ChangeNotifier {
 
   set selectedClassId(int? value) {
     selectedClassificationId = value;
+    notifyListeners();
+  }
+
+  // Setter for imagePath
+  set image(String? path) {
+    imagePath = path;
     notifyListeners();
   }
 }

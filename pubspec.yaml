@@ -46,7 +46,11 @@ dependencies:
   line_icons: ^2.0.3
   camera:
   permission_handler:
-
+  geolocator: "12.0.0"
+  geocoding:
+  path_provider:
+  google_maps_flutter:
+  icons8:
 dev_dependencies:
   flutter_test:
     sdk: flutter

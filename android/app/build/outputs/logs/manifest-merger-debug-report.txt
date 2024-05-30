@@ -1,0 +1,364 @@
+-- Merging decision tree log ---
+application
+INJECTED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml:7:5-37:19
+MERGED from [:geolocator_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-4.6.0\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-15:19
+MERGED from [:geolocator_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-4.6.0\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-15:19
+MERGED from [:image_picker_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.9+3\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-19:19
+MERGED from [:image_picker_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.9+3\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-19:19
+MERGED from [com.google.android.gms:play-services-location:21.2.0] C:\Users\VICTUS\.gradle\caches\transforms-3\45a9b002094b81f05be3fb89c8cd5c85\transformed\jetified-play-services-location-21.2.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:21.2.0] C:\Users\VICTUS\.gradle\caches\transforms-3\45a9b002094b81f05be3fb89c8cd5c85\transformed\jetified-play-services-location-21.2.0\AndroidManifest.xml:7:5-20
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\VICTUS\.gradle\caches\transforms-3\b68e18fb5d4739ccae982061550c2180\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\VICTUS\.gradle\caches\transforms-3\b68e18fb5d4739ccae982061550c2180\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
+MERGED from [com.google.android.gms:play-services-base:18.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\148f39f6e4a98b8e01edc2a9007ab9a2\transformed\jetified-play-services-base-18.3.0\AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-base:18.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\148f39f6e4a98b8e01edc2a9007ab9a2\transformed\jetified-play-services-base-18.3.0\AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-tasks:18.1.0] C:\Users\VICTUS\.gradle\caches\transforms-3\b0782a82901aecb0008f1007fe64f7cb\transformed\jetified-play-services-tasks-18.1.0\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.1.0] C:\Users\VICTUS\.gradle\caches\transforms-3\b0782a82901aecb0008f1007fe64f7cb\transformed\jetified-play-services-tasks-18.1.0\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\de67064587bba64cbfa856d73beab524\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\de67064587bba64cbfa856d73beab524\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:20:5-24:19
+MERGED from [androidx.camera:camera-camera2:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\56a2d61a7d78f040dd75079bc1f00092\transformed\jetified-camera-camera2-1.3.3\AndroidManifest.xml:23:5-34:19
+MERGED from [androidx.camera:camera-camera2:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\56a2d61a7d78f040dd75079bc1f00092\transformed\jetified-camera-camera2-1.3.3\AndroidManifest.xml:23:5-34:19
+MERGED from [androidx.camera:camera-core:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\4d8a2a2775f2246d55fb3ed0048d5738\transformed\jetified-camera-core-1.3.3\AndroidManifest.xml:23:5-34:19
+MERGED from [androidx.camera:camera-core:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\4d8a2a2775f2246d55fb3ed0048d5738\transformed\jetified-camera-core-1.3.3\AndroidManifest.xml:23:5-34:19
+MERGED from [androidx.core:core:1.13.0] C:\Users\VICTUS\.gradle\caches\transforms-3\dab56d17e39c07ab6477893db308b83c\transformed\core-1.13.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.13.0] C:\Users\VICTUS\.gradle\caches\transforms-3\dab56d17e39c07ab6477893db308b83c\transformed\core-1.13.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\VICTUS\.gradle\caches\transforms-3\cb20a0b1c3b65fb0768775885f2bdb9d\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\VICTUS\.gradle\caches\transforms-3\cb20a0b1c3b65fb0768775885f2bdb9d\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\VICTUS\.gradle\caches\transforms-3\23d1a022ddd8a8e030fa75dbf0783df1\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\VICTUS\.gradle\caches\transforms-3\23d1a022ddd8a8e030fa75dbf0783df1\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.13.0] C:\Users\VICTUS\.gradle\caches\transforms-3\dab56d17e39c07ab6477893db308b83c\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
+	android:name
+		INJECTED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml
+manifest
+ADDED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml:1:1-38:12
+INJECTED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml:1:1-38:12
+INJECTED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml:1:1-38:12
+INJECTED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml:1:1-38:12
+MERGED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml:1:1-38:12
+MERGED from [:shared_preferences_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\shared_preferences_android-2.2.1\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:permission_handler_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_android-12.0.6\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:geolocator_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-4.6.0\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
+MERGED from [:image_picker_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.9+3\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-21:12
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_plugin_android_lifecycle-2.0.17\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:geocoding_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\geocoding_android-3.3.1\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:camera_android_camerax] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.5+2\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-21:12
+MERGED from [com.google.android.gms:play-services-location:21.2.0] C:\Users\VICTUS\.gradle\caches\transforms-3\45a9b002094b81f05be3fb89c8cd5c85\transformed\jetified-play-services-location-21.2.0\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\VICTUS\.gradle\caches\transforms-3\0aefd868d2b846655317c1591fd17567\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\VICTUS\.gradle\caches\transforms-3\b68e18fb5d4739ccae982061550c2180\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:17:1-33:12
+MERGED from [com.google.android.gms:play-services-base:18.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\148f39f6e4a98b8e01edc2a9007ab9a2\transformed\jetified-play-services-base-18.3.0\AndroidManifest.xml:16:1-24:12
+MERGED from [com.google.android.gms:play-services-tasks:18.1.0] C:\Users\VICTUS\.gradle\caches\transforms-3\b0782a82901aecb0008f1007fe64f7cb\transformed\jetified-play-services-tasks-18.1.0\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\de67064587bba64cbfa856d73beab524\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:16:1-26:12
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\VICTUS\.gradle\caches\transforms-3\def953274cb7d5eb1f29dcca59ebfa37\transformed\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.7.2] C:\Users\VICTUS\.gradle\caches\transforms-3\7696df70dfef239c7f8cf1863fd635e7\transformed\jetified-activity-1.7.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.camera:camera-video:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\4b3104edd895a2ecdd553debf3796294\transformed\jetified-camera-video-1.3.3\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.camera:camera-lifecycle:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\8bf3bd4c9f2e6278dd414a43edcb693f\transformed\jetified-camera-lifecycle-1.3.3\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.camera:camera-camera2:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\56a2d61a7d78f040dd75079bc1f00092\transformed\jetified-camera-camera2-1.3.3\AndroidManifest.xml:17:1-36:12
+MERGED from [androidx.camera:camera-core:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\4d8a2a2775f2246d55fb3ed0048d5738\transformed\jetified-camera-core-1.3.3\AndroidManifest.xml:17:1-36:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\VICTUS\.gradle\caches\transforms-3\444f9ebebccfb92a0dca1a001c7dc3b7\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\VICTUS\.gradle\caches\transforms-3\c876e052559a73bf716176f72244a468\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\VICTUS\.gradle\caches\transforms-3\23f59a8cf46039f8e003470d40ff8837\transformed\customview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] C:\Users\VICTUS\.gradle\caches\transforms-3\a6de24f8e4dca3c9912dd3042e15ddc8\transformed\lifecycle-livedata-core-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] C:\Users\VICTUS\.gradle\caches\transforms-3\65c5890cb56dbbbb10e6647d993f0dda\transformed\lifecycle-livedata-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] C:\Users\VICTUS\.gradle\caches\transforms-3\9b76b590790ceb6fe8d0e967a8118a93\transformed\lifecycle-viewmodel-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] C:\Users\VICTUS\.gradle\caches\transforms-3\bced775ef594ffbe740e383cbcce29e5\transformed\jetified-lifecycle-viewmodel-savedstate-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core-ktx:1.13.0] C:\Users\VICTUS\.gradle\caches\transforms-3\a3b3e3935c5d86d5d8cbba30bdb3bd4f\transformed\jetified-core-ktx-1.13.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core:1.13.0] C:\Users\VICTUS\.gradle\caches\transforms-3\dab56d17e39c07ab6477893db308b83c\transformed\core-1.13.0\AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\VICTUS\.gradle\caches\transforms-3\e662c1a0b880f44b20e8e15b1b00e534\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\VICTUS\.gradle\caches\transforms-3\ba06a09885ab80953508402ca8eb6865\transformed\jetified-savedstate-1.2.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\VICTUS\.gradle\caches\transforms-3\34065c718f186656c845c5ce92aa0a0b\transformed\exifinterface-1.3.6\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\VICTUS\.gradle\caches\transforms-3\cb20a0b1c3b65fb0768775885f2bdb9d\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\VICTUS\.gradle\caches\transforms-3\64f438025d412dab5982b90957bcea8d\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\VICTUS\.gradle\caches\transforms-3\c90c5e43a4c6dabd7af082f3825f7207\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\VICTUS\.gradle\caches\transforms-3\23d1a022ddd8a8e030fa75dbf0783df1\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\VICTUS\.gradle\caches\transforms-3\c8ea9d08429a655443447bf18a566eb9\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\VICTUS\.gradle\caches\transforms-3\c0dc00b702c49f41f728f9c114b90b6b\transformed\jetified-annotation-experimental-1.4.0\AndroidManifest.xml:2:1-7:12
+INJECTED from D:\Eamar_app-master\android\app\src\debug\AndroidManifest.xml:1:1-7:12
+INJECTED from D:\Eamar_app-master\android\app\src\debug\AndroidManifest.xml:1:1-7:12
+INJECTED from D:\Eamar_app-master\android\app\src\debug\AndroidManifest.xml:1:1-7:12
+	package
+		INJECTED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml
+		ADDED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml:1:1-38:12
+		INJECTED from D:\Eamar_app-master\android\app\src\debug\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml
+		ADDED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml:1:1-38:12
+		INJECTED from D:\Eamar_app-master\android\app\src\debug\AndroidManifest.xml
+	android:versionCode
+		INJECTED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml
+		ADDED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml:1:1-38:12
+		INJECTED from D:\Eamar_app-master\android\app\src\debug\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml:1:11-69
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml:5:5-79
+	android:name
+		ADDED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml:5:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml:6:5-81
+	android:name
+		ADDED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml:6:22-78
+uses-sdk
+INJECTED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml
+INJECTED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml
+MERGED from [:shared_preferences_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\shared_preferences_android-2.2.1\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:shared_preferences_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\shared_preferences_android-2.2.1\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:permission_handler_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_android-12.0.6\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:permission_handler_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_android-12.0.6\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:geolocator_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-4.6.0\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:geolocator_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-4.6.0\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:image_picker_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.9+3\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:image_picker_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.9+3\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_plugin_android_lifecycle-2.0.17\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_plugin_android_lifecycle-2.0.17\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:geocoding_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\geocoding_android-3.3.1\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:geocoding_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\geocoding_android-3.3.1\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:camera_android_camerax] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.5+2\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:6:5-8:41
+MERGED from [:camera_android_camerax] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.5+2\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:6:5-8:41
+MERGED from [com.google.android.gms:play-services-location:21.2.0] C:\Users\VICTUS\.gradle\caches\transforms-3\45a9b002094b81f05be3fb89c8cd5c85\transformed\jetified-play-services-location-21.2.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:21.2.0] C:\Users\VICTUS\.gradle\caches\transforms-3\45a9b002094b81f05be3fb89c8cd5c85\transformed\jetified-play-services-location-21.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\VICTUS\.gradle\caches\transforms-3\0aefd868d2b846655317c1591fd17567\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\VICTUS\.gradle\caches\transforms-3\0aefd868d2b846655317c1591fd17567\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\VICTUS\.gradle\caches\transforms-3\b68e18fb5d4739ccae982061550c2180\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\VICTUS\.gradle\caches\transforms-3\b68e18fb5d4739ccae982061550c2180\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-base:18.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\148f39f6e4a98b8e01edc2a9007ab9a2\transformed\jetified-play-services-base-18.3.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-base:18.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\148f39f6e4a98b8e01edc2a9007ab9a2\transformed\jetified-play-services-base-18.3.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.1.0] C:\Users\VICTUS\.gradle\caches\transforms-3\b0782a82901aecb0008f1007fe64f7cb\transformed\jetified-play-services-tasks-18.1.0\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.1.0] C:\Users\VICTUS\.gradle\caches\transforms-3\b0782a82901aecb0008f1007fe64f7cb\transformed\jetified-play-services-tasks-18.1.0\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\de67064587bba64cbfa856d73beab524\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\de67064587bba64cbfa856d73beab524\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:18:5-43
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\VICTUS\.gradle\caches\transforms-3\def953274cb7d5eb1f29dcca59ebfa37\transformed\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\VICTUS\.gradle\caches\transforms-3\def953274cb7d5eb1f29dcca59ebfa37\transformed\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.7.2] C:\Users\VICTUS\.gradle\caches\transforms-3\7696df70dfef239c7f8cf1863fd635e7\transformed\jetified-activity-1.7.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.7.2] C:\Users\VICTUS\.gradle\caches\transforms-3\7696df70dfef239c7f8cf1863fd635e7\transformed\jetified-activity-1.7.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.camera:camera-video:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\4b3104edd895a2ecdd553debf3796294\transformed\jetified-camera-video-1.3.3\AndroidManifest.xml:5:5-44
+MERGED from [androidx.camera:camera-video:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\4b3104edd895a2ecdd553debf3796294\transformed\jetified-camera-video-1.3.3\AndroidManifest.xml:5:5-44
+MERGED from [androidx.camera:camera-lifecycle:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\8bf3bd4c9f2e6278dd414a43edcb693f\transformed\jetified-camera-lifecycle-1.3.3\AndroidManifest.xml:5:5-44
+MERGED from [androidx.camera:camera-lifecycle:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\8bf3bd4c9f2e6278dd414a43edcb693f\transformed\jetified-camera-lifecycle-1.3.3\AndroidManifest.xml:5:5-44
+MERGED from [androidx.camera:camera-camera2:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\56a2d61a7d78f040dd75079bc1f00092\transformed\jetified-camera-camera2-1.3.3\AndroidManifest.xml:21:5-44
+MERGED from [androidx.camera:camera-camera2:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\56a2d61a7d78f040dd75079bc1f00092\transformed\jetified-camera-camera2-1.3.3\AndroidManifest.xml:21:5-44
+MERGED from [androidx.camera:camera-core:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\4d8a2a2775f2246d55fb3ed0048d5738\transformed\jetified-camera-core-1.3.3\AndroidManifest.xml:21:5-44
+MERGED from [androidx.camera:camera-core:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\4d8a2a2775f2246d55fb3ed0048d5738\transformed\jetified-camera-core-1.3.3\AndroidManifest.xml:21:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\VICTUS\.gradle\caches\transforms-3\444f9ebebccfb92a0dca1a001c7dc3b7\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\VICTUS\.gradle\caches\transforms-3\444f9ebebccfb92a0dca1a001c7dc3b7\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\VICTUS\.gradle\caches\transforms-3\c876e052559a73bf716176f72244a468\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\VICTUS\.gradle\caches\transforms-3\c876e052559a73bf716176f72244a468\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\VICTUS\.gradle\caches\transforms-3\23f59a8cf46039f8e003470d40ff8837\transformed\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\VICTUS\.gradle\caches\transforms-3\23f59a8cf46039f8e003470d40ff8837\transformed\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] C:\Users\VICTUS\.gradle\caches\transforms-3\a6de24f8e4dca3c9912dd3042e15ddc8\transformed\lifecycle-livedata-core-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] C:\Users\VICTUS\.gradle\caches\transforms-3\a6de24f8e4dca3c9912dd3042e15ddc8\transformed\lifecycle-livedata-core-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] C:\Users\VICTUS\.gradle\caches\transforms-3\65c5890cb56dbbbb10e6647d993f0dda\transformed\lifecycle-livedata-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] C:\Users\VICTUS\.gradle\caches\transforms-3\65c5890cb56dbbbb10e6647d993f0dda\transformed\lifecycle-livedata-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] C:\Users\VICTUS\.gradle\caches\transforms-3\9b76b590790ceb6fe8d0e967a8118a93\transformed\lifecycle-viewmodel-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] C:\Users\VICTUS\.gradle\caches\transforms-3\9b76b590790ceb6fe8d0e967a8118a93\transformed\lifecycle-viewmodel-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] C:\Users\VICTUS\.gradle\caches\transforms-3\bced775ef594ffbe740e383cbcce29e5\transformed\jetified-lifecycle-viewmodel-savedstate-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] C:\Users\VICTUS\.gradle\caches\transforms-3\bced775ef594ffbe740e383cbcce29e5\transformed\jetified-lifecycle-viewmodel-savedstate-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core-ktx:1.13.0] C:\Users\VICTUS\.gradle\caches\transforms-3\a3b3e3935c5d86d5d8cbba30bdb3bd4f\transformed\jetified-core-ktx-1.13.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.13.0] C:\Users\VICTUS\.gradle\caches\transforms-3\a3b3e3935c5d86d5d8cbba30bdb3bd4f\transformed\jetified-core-ktx-1.13.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core:1.13.0] C:\Users\VICTUS\.gradle\caches\transforms-3\dab56d17e39c07ab6477893db308b83c\transformed\core-1.13.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.13.0] C:\Users\VICTUS\.gradle\caches\transforms-3\dab56d17e39c07ab6477893db308b83c\transformed\core-1.13.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\VICTUS\.gradle\caches\transforms-3\e662c1a0b880f44b20e8e15b1b00e534\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\VICTUS\.gradle\caches\transforms-3\e662c1a0b880f44b20e8e15b1b00e534\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\VICTUS\.gradle\caches\transforms-3\ba06a09885ab80953508402ca8eb6865\transformed\jetified-savedstate-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\VICTUS\.gradle\caches\transforms-3\ba06a09885ab80953508402ca8eb6865\transformed\jetified-savedstate-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\VICTUS\.gradle\caches\transforms-3\34065c718f186656c845c5ce92aa0a0b\transformed\exifinterface-1.3.6\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\VICTUS\.gradle\caches\transforms-3\34065c718f186656c845c5ce92aa0a0b\transformed\exifinterface-1.3.6\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\VICTUS\.gradle\caches\transforms-3\cb20a0b1c3b65fb0768775885f2bdb9d\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\VICTUS\.gradle\caches\transforms-3\cb20a0b1c3b65fb0768775885f2bdb9d\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\VICTUS\.gradle\caches\transforms-3\64f438025d412dab5982b90957bcea8d\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\VICTUS\.gradle\caches\transforms-3\64f438025d412dab5982b90957bcea8d\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\VICTUS\.gradle\caches\transforms-3\c90c5e43a4c6dabd7af082f3825f7207\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\VICTUS\.gradle\caches\transforms-3\c90c5e43a4c6dabd7af082f3825f7207\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\VICTUS\.gradle\caches\transforms-3\23d1a022ddd8a8e030fa75dbf0783df1\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\VICTUS\.gradle\caches\transforms-3\23d1a022ddd8a8e030fa75dbf0783df1\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\VICTUS\.gradle\caches\transforms-3\c8ea9d08429a655443447bf18a566eb9\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\VICTUS\.gradle\caches\transforms-3\c8ea9d08429a655443447bf18a566eb9\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\VICTUS\.gradle\caches\transforms-3\c0dc00b702c49f41f728f9c114b90b6b\transformed\jetified-annotation-experimental-1.4.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\VICTUS\.gradle\caches\transforms-3\c0dc00b702c49f41f728f9c114b90b6b\transformed\jetified-annotation-experimental-1.4.0\AndroidManifest.xml:5:5-44
+INJECTED from D:\Eamar_app-master\android\app\src\debug\AndroidManifest.xml
+INJECTED from D:\Eamar_app-master\android\app\src\debug\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Eamar_app-master\android\app\src\debug\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\Eamar_app-master\android\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Eamar_app-master\android\app\src\debug\AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from D:\Eamar_app-master\android\app\src\debug\AndroidManifest.xml:6:5-66
+	android:name
+		ADDED from D:\Eamar_app-master\android\app\src\debug\AndroidManifest.xml:6:22-64
+service#com.baseflow.geolocator.GeolocatorLocationService
+ADDED from [:geolocator_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-4.6.0\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:56
+	android:enabled
+		ADDED from [:geolocator_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-4.6.0\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-35
+	android:exported
+		ADDED from [:geolocator_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-4.6.0\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
+	android:foregroundServiceType
+		ADDED from [:geolocator_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-4.6.0\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-53
+	android:name
+		ADDED from [:geolocator_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-4.6.0\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-77
+provider#io.flutter.plugins.imagepicker.ImagePickerFileProvider
+ADDED from [:image_picker_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.9+3\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
+	android:grantUriPermissions
+		ADDED from [:image_picker_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.9+3\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
+	android:authorities
+		ADDED from [:image_picker_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.9+3\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-74
+	android:exported
+		ADDED from [:image_picker_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.9+3\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
+	android:name
+		ADDED from [:image_picker_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.9+3\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-82
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:image_picker_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.9+3\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:75
+	android:resource
+		ADDED from [:image_picker_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.9+3\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-72
+	android:name
+		ADDED from [:image_picker_android] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.9+3\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
+uses-feature#android.hardware.camera.any
+ADDED from [:camera_android_camerax] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.5+2\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-64
+	android:name
+		ADDED from [:camera_android_camerax] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.5+2\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:19-61
+uses-permission#android.permission.CAMERA
+ADDED from [:camera_android_camerax] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.5+2\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:12:5-65
+	android:name
+		ADDED from [:camera_android_camerax] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.5+2\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:12:22-62
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from [:camera_android_camerax] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.5+2\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:13:5-71
+	android:name
+		ADDED from [:camera_android_camerax] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.5+2\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:13:22-68
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from [:camera_android_camerax] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.5+2\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:14:5-16:38
+	android:maxSdkVersion
+		ADDED from [:camera_android_camerax] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.5+2\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:16:9-35
+	android:name
+		ADDED from [:camera_android_camerax] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.5+2\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:15:9-65
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from [:camera_android_camerax] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.5+2\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:17:5-19:31
+	tools:node
+		ADDED from [:camera_android_camerax] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.5+2\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:19:9-28
+	android:name
+		ADDED from [:camera_android_camerax] C:\Users\VICTUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.5+2\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:18:9-64
+uses-library#androidx.window.extensions
+ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\VICTUS\.gradle\caches\transforms-3\b68e18fb5d4739ccae982061550c2180\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\VICTUS\.gradle\caches\transforms-3\b68e18fb5d4739ccae982061550c2180\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\VICTUS\.gradle\caches\transforms-3\b68e18fb5d4739ccae982061550c2180\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+uses-library#androidx.window.sidecar
+ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\VICTUS\.gradle\caches\transforms-3\b68e18fb5d4739ccae982061550c2180\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\VICTUS\.gradle\caches\transforms-3\b68e18fb5d4739ccae982061550c2180\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\VICTUS\.gradle\caches\transforms-3\b68e18fb5d4739ccae982061550c2180\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:18.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\148f39f6e4a98b8e01edc2a9007ab9a2\transformed\jetified-play-services-base-18.3.0\AndroidManifest.xml:20:9-22:45
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:18.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\148f39f6e4a98b8e01edc2a9007ab9a2\transformed\jetified-play-services-base-18.3.0\AndroidManifest.xml:22:19-43
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:18.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\148f39f6e4a98b8e01edc2a9007ab9a2\transformed\jetified-play-services-base-18.3.0\AndroidManifest.xml:21:19-78
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:18.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\148f39f6e4a98b8e01edc2a9007ab9a2\transformed\jetified-play-services-base-18.3.0\AndroidManifest.xml:20:19-85
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\de67064587bba64cbfa856d73beab524\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\de67064587bba64cbfa856d73beab524\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:23:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\de67064587bba64cbfa856d73beab524\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:22:13-58
+service#androidx.camera.core.impl.MetadataHolderService
+ADDED from [androidx.camera:camera-camera2:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\56a2d61a7d78f040dd75079bc1f00092\transformed\jetified-camera-camera2-1.3.3\AndroidManifest.xml:24:9-33:19
+MERGED from [androidx.camera:camera-core:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\4d8a2a2775f2246d55fb3ed0048d5738\transformed\jetified-camera-core-1.3.3\AndroidManifest.xml:29:9-33:78
+MERGED from [androidx.camera:camera-core:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\4d8a2a2775f2246d55fb3ed0048d5738\transformed\jetified-camera-core-1.3.3\AndroidManifest.xml:29:9-33:78
+	tools:node
+		ADDED from [androidx.camera:camera-camera2:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\56a2d61a7d78f040dd75079bc1f00092\transformed\jetified-camera-camera2-1.3.3\AndroidManifest.xml:29:13-31
+	android:enabled
+		ADDED from [androidx.camera:camera-camera2:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\56a2d61a7d78f040dd75079bc1f00092\transformed\jetified-camera-camera2-1.3.3\AndroidManifest.xml:26:13-36
+	android:exported
+		ADDED from [androidx.camera:camera-camera2:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\56a2d61a7d78f040dd75079bc1f00092\transformed\jetified-camera-camera2-1.3.3\AndroidManifest.xml:27:13-37
+	tools:ignore
+		ADDED from [androidx.camera:camera-camera2:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\56a2d61a7d78f040dd75079bc1f00092\transformed\jetified-camera-camera2-1.3.3\AndroidManifest.xml:28:13-75
+	android:name
+		ADDED from [androidx.camera:camera-camera2:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\56a2d61a7d78f040dd75079bc1f00092\transformed\jetified-camera-camera2-1.3.3\AndroidManifest.xml:25:13-75
+meta-data#androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER
+ADDED from [androidx.camera:camera-camera2:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\56a2d61a7d78f040dd75079bc1f00092\transformed\jetified-camera-camera2-1.3.3\AndroidManifest.xml:30:13-32:89
+	android:value
+		ADDED from [androidx.camera:camera-camera2:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\56a2d61a7d78f040dd75079bc1f00092\transformed\jetified-camera-camera2-1.3.3\AndroidManifest.xml:32:17-86
+	android:name
+		ADDED from [androidx.camera:camera-camera2:1.3.3] C:\Users\VICTUS\.gradle\caches\transforms-3\56a2d61a7d78f040dd75079bc1f00092\transformed\jetified-camera-camera2-1.3.3\AndroidManifest.xml:31:17-103
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.0] C:\Users\VICTUS\.gradle\caches\transforms-3\dab56d17e39c07ab6477893db308b83c\transformed\core-1.13.0\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.0] C:\Users\VICTUS\.gradle\caches\transforms-3\dab56d17e39c07ab6477893db308b83c\transformed\core-1.13.0\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.0] C:\Users\VICTUS\.gradle\caches\transforms-3\dab56d17e39c07ab6477893db308b83c\transformed\core-1.13.0\AndroidManifest.xml:23:9-81
+permission#com.example.eamar_app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.0] C:\Users\VICTUS\.gradle\caches\transforms-3\dab56d17e39c07ab6477893db308b83c\transformed\core-1.13.0\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.0] C:\Users\VICTUS\.gradle\caches\transforms-3\dab56d17e39c07ab6477893db308b83c\transformed\core-1.13.0\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.0] C:\Users\VICTUS\.gradle\caches\transforms-3\dab56d17e39c07ab6477893db308b83c\transformed\core-1.13.0\AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.0] C:\Users\VICTUS\.gradle\caches\transforms-3\dab56d17e39c07ab6477893db308b83c\transformed\core-1.13.0\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.0] C:\Users\VICTUS\.gradle\caches\transforms-3\dab56d17e39c07ab6477893db308b83c\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
+uses-permission#com.example.eamar_app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.0] C:\Users\VICTUS\.gradle\caches\transforms-3\dab56d17e39c07ab6477893db308b83c\transformed\core-1.13.0\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.0] C:\Users\VICTUS\.gradle\caches\transforms-3\dab56d17e39c07ab6477893db308b83c\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\VICTUS\.gradle\caches\transforms-3\cb20a0b1c3b65fb0768775885f2bdb9d\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\VICTUS\.gradle\caches\transforms-3\cb20a0b1c3b65fb0768775885f2bdb9d\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:25:13-67
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\VICTUS\.gradle\caches\transforms-3\50fe5efde885c494cb2dc9a0c330b77b\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:25-92

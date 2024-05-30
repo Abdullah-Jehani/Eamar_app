@@ -25,12 +25,12 @@ class _CloseWidgetState extends State<CloseWidget> {
         decoration: BoxDecoration(
             color: secondaryColor,
             borderRadius: const BorderRadius.all(Radius.circular(24))),
-        child: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           child: Text(
             'X',
             style: TextStyle(
-                color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+                color: primaryColor, fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),
       ),

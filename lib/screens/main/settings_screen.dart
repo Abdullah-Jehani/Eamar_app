@@ -3,7 +3,6 @@ import 'package:eamar_app/screens/profile/profile_screen.dart';
 import 'package:eamar_app/widgets/settings/setting_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
