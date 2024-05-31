@@ -1,3 +1,4 @@
+import 'package:eamar_app/helpers/colors.dart';
 import 'package:eamar_app/providers/report_provider.dart';
 import 'package:eamar_app/screens/reportSubmittion/personal_info_screen.dart';
 import 'package:eamar_app/widgets/location/location_card_widget.dart';
@@ -158,8 +159,9 @@ class _LocationScreenState extends State<LocationScreen> {
                   );
                 }
               },
-              child: const ReportButton(
+              child: ReportButton(
                 text: 'التالي',
+                bgColor: primaryColor,
               ),
             ),
           ],

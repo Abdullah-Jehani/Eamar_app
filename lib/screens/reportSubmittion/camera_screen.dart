@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:eamar_app/helpers/colors.dart';
+import 'package:eamar_app/providers/report_provider.dart';
 import 'package:eamar_app/screens/reportSubmittion/classification_screen.dart';
 import 'package:eamar_app/widgets/helper/close_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/ooui.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart'; // Import Provider
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({super.key});
@@ -56,6 +58,9 @@ class _CameraScreenState extends State<CameraScreen> {
                     children: [
                       GestureDetector(
                         onTap: () {
+                          // Update the ReportProvider with the image path
+                          Provider.of<ReportProvider>(context, listen: false)
+                              .imagePath = selectedImage!.path;
                           Navigator.push(
                             context,
                             CupertinoPageRoute(

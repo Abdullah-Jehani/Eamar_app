@@ -50,7 +50,6 @@ dependencies:
   geocoding:
   path_provider:
   google_maps_flutter:
-  icons8:
 dev_dependencies:
   flutter_test:
     sdk: flutter

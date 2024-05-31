@@ -198,6 +198,7 @@ class _FirstScreenState extends State<FirstScreen> {
                             Provider.of<ReportProvider>(context, listen: false);
                         // Update the selected id
                         reportProvider.selectedId = reports[index]['id'];
+                        reportProvider.selectedName = reports[index]['text'];
 
                         setState(() {
                           selectedIndex = index;

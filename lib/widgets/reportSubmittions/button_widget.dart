@@ -2,11 +2,12 @@ import 'package:eamar_app/helpers/colors.dart';
 import 'package:flutter/material.dart';
 
 class ReportButton extends StatefulWidget {
-  const ReportButton({super.key, required this.text});
+  const ReportButton({super.key, required this.text, this.bgColor});
 
   @override
   State<ReportButton> createState() => _ReportButtonState();
   final String text;
+  final Color? bgColor;
 }
 
 class _ReportButtonState extends State<ReportButton> {
@@ -18,7 +19,7 @@ class _ReportButtonState extends State<ReportButton> {
       child: Container(
         height: size.height * 0.06,
         decoration: BoxDecoration(
-          color: primaryColor,
+          color: widget.bgColor ?? primaryColor,
           borderRadius: const BorderRadius.all(
             Radius.circular(8),
           ),
