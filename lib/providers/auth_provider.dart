@@ -86,6 +86,7 @@ class AuthProvider with ChangeNotifier {
       if (kDebugMode) {
         print("Response Status: ${response.statusCode}");
       }
+
       if (kDebugMode) {
         print("Response Body: ${response.body}");
       }
