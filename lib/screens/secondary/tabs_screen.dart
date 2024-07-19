@@ -6,7 +6,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:unicons/unicons.dart';
-import 'package:line_icons/line_icons.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({super.key});
@@ -30,7 +29,7 @@ class _TabsScreenState extends State<TabsScreen> {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         child: GNav(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
           color: Colors.black,
           activeColor: primaryColor,
           onTabChange: (index) {
@@ -41,21 +40,22 @@ class _TabsScreenState extends State<TabsScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
           tabs: [
             GButton(
-              icon: LineIcons.home,
+              icon: UniconsLine.home_alt,
               iconColor: textColor,
               iconSize: 30,
-              iconActiveColor: primaryColor, // Provide a valid color value
+              iconActiveColor: primaryColor,
             ),
             GButton(
-              icon: CupertinoIcons.news, iconColor: textColor,
+              icon: CupertinoIcons.news,
+              iconColor: textColor,
               iconSize: 32,
-              iconActiveColor: primaryColor, // Provide a valid color value
+              iconActiveColor: primaryColor,
             ),
             GButton(
-              icon: UniconsLine.setting,
+              icon: Icons.settings_outlined,
               iconColor: textColor,
               iconSize: 30,
-              iconActiveColor: primaryColor, // Provide a valid color value
+              iconActiveColor: primaryColor,
             ),
           ],
         ),

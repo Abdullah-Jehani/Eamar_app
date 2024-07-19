@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/uil.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 
 class AccountDetails extends StatefulWidget {
@@ -24,13 +25,15 @@ class _AccountDetailsState extends State<AccountDetails> {
   TextEditingController dateController = TextEditingController();
 
   final phoneregex = RegExp(r'^(091|092|093|094)\d{7}$');
+  final dateRegex = RegExp(r'^\d{4}-\d{2}-\d{2}$');
   bool isValid = false;
   bool isLogginIn = false;
 
   validator() async {
     if (isChecked &&
         phoneregex.hasMatch(phoneNumberController.text) &&
-        addressController.text.length > 3) {
+        addressController.text.length > 3 &&
+        dateRegex.hasMatch(dateController.text)) {
       setState(() {
         isValid = true;
       });
@@ -55,45 +58,16 @@ class _AccountDetailsState extends State<AccountDetails> {
                 onTap: () {
                   validator();
                   if (isValid) {
-                    setState(() {
-                      isLogginIn = true;
-                    });
-                    Navigator.pushAndRemoveUntil(
+                    Navigator.push(
                       context,
-                      PageRouteBuilder(
-                        pageBuilder: (context, animation, secondaryAnimation) =>
-                            const AccountPhoto(),
-                        transitionsBuilder:
-                            (context, animation, secondaryAnimation, child) {
-                          return FadeTransition(
-                            opacity: animation,
-                            child: child,
-                          );
-                        },
-                        transitionDuration: const Duration(milliseconds: 90),
+                      MaterialPageRoute(
+                        builder: (context) => AccountPhoto(
+                          phoneNumber: phoneNumberController.text.toString(),
+                          address: addressController.text.toString(),
+                          dob: dateController.text.toString(),
+                        ),
                       ),
-                      (route) => false,
                     );
-                    // Provider.of<AuthProvider>(context, listen: false).register({
-                    // "name": userNameController.text.toString(),
-                    // "email": emailController.text.toString(),
-                    // "password": passwordController.text.toString()
-                    // }, context).then((value) {
-                    // if (value.first) {
-                    //   Navigator.pushAndRemoveUntil(
-                    //     context,
-                    //     CupertinoPageRoute(
-                    //         builder: (context) => const AccountDetails()),
-                    //     (route) => false,
-                    //   );
-                    // } else {
-                    //   setState(() {
-                    //     isLogginIn = false;
-                    //   });
-                    //   SnackBar snackBar = SnackBar(content: Text(value.last));
-                    //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    // }
-                    // });
                   } else {
                     SnackBar snackBar = const SnackBar(
                       content: Text('Your input is invalid'),
@@ -247,61 +221,13 @@ class _AccountDetailsState extends State<AccountDetails> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsets.symmetric(horizontal: size.width * 0.07),
-                        child: GestureDetector(
-                          onTap: () {
-                            showCupertinoModalPopup(
-                              context: context,
-                              builder: (BuildContext context) => Container(
-                                decoration: BoxDecoration(
-                                    color: secondaryColor,
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(12))),
-                                height: size.height * .21,
-                                child: CupertinoDatePicker(
-                                  initialDateTime: dateTime,
-                                  onDateTimeChanged: (DateTime newTime) {
-                                    if (newTime.year >= 1955 &&
-                                        newTime.year <= 2006) {
-                                      setState(() {
-                                        dateTime = newTime;
-                                      });
-                                    }
-                                  },
-                                  use24hFormat: true,
-                                  mode: CupertinoDatePickerMode
-                                      .date, // Updated mode to dateAndTime
-                                  minimumDate: DateTime(1945),
-                                  maximumDate: DateTime(2006),
-                                ),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            height: size.height * .077,
-                            padding: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              color: fillInputColor,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Icon(
-                                  Icons.cake,
-                                  size: 20,
-                                ),
-                                Text(
-                                  '${dateTime.day} / ${dateTime.month} / ${dateTime.year}',
-                                  style: TextStyle(
-                                    color: Colors.black.withOpacity(.9),
-                                    fontFamily: 'cairo',
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                            EdgeInsets.symmetric(horizontal: size.width * .070),
+                        child: InputFieldWidget(
+                          controller: dateController,
+                          isPassword: false,
+                          isArabic: false,
+                          icon: const Icon(LineIcons.birthdayCake),
+                          text: '2002-12-3',
                         ),
                       ),
                       SizedBox(

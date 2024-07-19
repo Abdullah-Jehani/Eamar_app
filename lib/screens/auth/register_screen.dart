@@ -58,7 +58,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       isLogginIn = true;
                     });
                     Provider.of<AuthProvider>(context, listen: false).register({
-                      "name": userNameController.text.toString(),
+                      "username": userNameController.text.toString(),
                       "email": emailController.text.toString(),
                       "password": passwordController.text.toString()
                     }, context).then((value) {
