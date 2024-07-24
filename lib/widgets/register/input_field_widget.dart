@@ -36,7 +36,7 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
         widget.isArabic
             ? FilteringTextInputFormatter.allow(arabicPattern)
             : FilteringTextInputFormatter.allow(
-                (RegExp(r'^[a-zA-Z0-9\s!@#$%^&*(),.?":{}|<>+=\-*/]+$')))
+                englishNumbersSpecialCharsPattern)
       ],
       textDirection: TextDirection.rtl,
       obscureText: widget.isPassword ? hidePass : !hidePass,

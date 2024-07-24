@@ -47,6 +47,7 @@ class _ScreenRouterState extends State<ScreenRouter> {
     const TabsScreen();
     Provider.of<AuthProvider>(context, listen: false).initAuthentication();
     Provider.of<AuthProvider>(context, listen: false).checkFirstTime();
+    Provider.of<AuthProvider>(context, listen: false).loadUserData();
     super.initState();
   }
 

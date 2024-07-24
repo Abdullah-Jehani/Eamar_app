@@ -1,23 +1,24 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-const apiUrl = "http://192.168.1.15:8080/api/";
+const apiUrl = "http://192.168.1.6:8080/api/";
 
 class Api {
   Future<Response> post(String url, Map body) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final response = await http
         .post(Uri.parse(apiUrl + url), body: json.encode(body), headers: {
-      "Accept": "Application/json",
-      "content-type": "Application/json",
+      "Accept": "application/json",
+      "content-type": "application/json",
       "Authorization": "Bearer ${prefs.getString("token")}"
     });
     if (kDebugMode) {
       print("RESPONSE STATUSCODE : ${response.statusCode}");
-      print("RESPONSE BODEY : ${response.body}");
+      print("RESPONSE BODY : ${response.body}");
     }
 
     return response;
@@ -50,6 +51,39 @@ class Api {
       'Content-Type': 'application/json',
       "Authorization": "Bearer ${prefs.getString("token")}"
     });
+    return response;
+  }
+
+  Future<Response> postMultipart(String url, Map<String, dynamic> fields,
+      {File? file, String? fileField}) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString("token");
+    final request = http.MultipartRequest('POST', Uri.parse(apiUrl + url));
+
+    // Adding fields
+    fields.forEach((key, value) {
+      request.fields[key] = value.toString();
+    });
+
+    // Adding file if provided
+    if (file != null && fileField != null) {
+      request.files
+          .add(await http.MultipartFile.fromPath(fileField, file.path));
+    }
+
+    // Adding headers
+    request.headers['Accept'] = 'application/json';
+    request.headers['Authorization'] = 'Bearer $token';
+
+    // Sending the request
+    final streamedResponse = await request.send();
+    final response = await http.Response.fromStream(streamedResponse);
+
+    if (kDebugMode) {
+      print("RESPONSE STATUSCODE : ${response.statusCode}");
+      print("RESPONSE BODY : ${response.body}");
+    }
+
     return response;
   }
 }

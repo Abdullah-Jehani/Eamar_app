@@ -36,15 +36,19 @@ class _AccountPhotoState extends State<AccountPhoto> {
     });
   }
 
-  void submitData({bool skipPhoto = false}) {
-    Provider.of<AuthProvider>(context, listen: false).registerPersonalInfo({
-      "phone": widget.phoneNumber,
-      "address": widget.address,
-      "dob": widget.dob,
-      // "profile_photo": skipPhoto ? null : _image,
-    }, context).then((value) {
-      print('submitData result: $value');
-      if (value.first) {
+  void submitData({bool skipPhoto = false}) async {
+    try {
+      Map<String, dynamic> userBody = {
+        "phone": widget.phoneNumber,
+        "address": widget.address,
+        "dob": widget.dob,
+        "profile_photo": skipPhoto ? null : _image,
+      };
+
+      final result = await Provider.of<AuthProvider>(context, listen: false)
+          .registerPersonalInfo(userBody, context);
+
+      if (result.first) {
         Navigator.pushAndRemoveUntil(
           context,
           PageRouteBuilder(
@@ -52,24 +56,23 @@ class _AccountPhotoState extends State<AccountPhoto> {
                 const FinishScreen(),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
-              return FadeTransition(
-                opacity: animation,
-                child: child,
-              );
+              return FadeTransition(opacity: animation, child: child);
             },
             transitionDuration: const Duration(milliseconds: 90),
           ),
           (route) => false,
         );
       } else {
-        String message = value.last ?? 'An unknown error occurred';
+        String message = result.last ?? 'An unknown error occurred';
         SnackBar snackBar = SnackBar(content: Text(message));
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
-    }).catchError((e) {
+    } catch (e) {
       // Handle any unexpected errors
-      print("Unexpected Error: $e");
-    });
+      SnackBar snackBar = const SnackBar(
+          content: Text('An unexpected error occurred. Please try again.'));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
   }
 
   @override

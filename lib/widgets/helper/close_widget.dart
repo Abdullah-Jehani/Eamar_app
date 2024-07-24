@@ -1,7 +1,6 @@
 import 'package:eamar_app/helpers/colors.dart';
 import 'package:eamar_app/screens/secondary/tabs_screen.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 class CloseWidget extends StatefulWidget {
   const CloseWidget({super.key});

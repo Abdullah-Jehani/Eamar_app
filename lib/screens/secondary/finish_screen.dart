@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:confetti/confetti.dart';
 import 'package:eamar_app/helpers/colors.dart';
-import 'package:eamar_app/screens/main/home_screen.dart';
+import 'package:eamar_app/screens/secondary/tabs_screen.dart';
 import 'package:flutter/material.dart';
 
 class FinishScreen extends StatefulWidget {
@@ -76,7 +76,7 @@ class _FinishScreenState extends State<FinishScreen> {
                             color: primaryColor,
                             fontFamily: 'cairo',
                             fontSize: 40,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                         SizedBox(
@@ -107,7 +107,7 @@ class _FinishScreenState extends State<FinishScreen> {
                         PageRouteBuilder(
                           pageBuilder:
                               (context, animation, secondaryAnimation) =>
-                                  const HomeScreen(),
+                                  const TabsScreen(),
                           transitionsBuilder:
                               (context, animation, secondaryAnimation, child) {
                             return FadeTransition(
@@ -133,7 +133,7 @@ class _FinishScreenState extends State<FinishScreen> {
                           MaterialStateProperty.all<Color>(Colors.white),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.0),
+                          borderRadius: BorderRadius.circular(10.0),
                         ),
                       ),
                     ),
@@ -141,9 +141,9 @@ class _FinishScreenState extends State<FinishScreen> {
                       child: const Text(
                         'انهاء',
                         style: TextStyle(
-                          fontFamily: 'cairo',
-                          fontSize: 18,
-                        ),
+                            fontFamily: 'cairo',
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400),
                       ),
                     ),
                   ),

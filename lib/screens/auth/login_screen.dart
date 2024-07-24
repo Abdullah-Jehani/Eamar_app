@@ -1,7 +1,7 @@
 import 'package:eamar_app/helpers/colors.dart';
 import 'package:eamar_app/providers/auth_provider.dart';
 import 'package:eamar_app/screens/auth/register_screen.dart';
-import 'package:eamar_app/screens/main/home_screen.dart';
+import 'package:eamar_app/screens/secondary/tabs_screen.dart';
 import 'package:eamar_app/widgets/register/input_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -160,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     PageRouteBuilder(
                                       pageBuilder: (context, animation,
                                               secondaryAnimation) =>
-                                          const HomeScreen(),
+                                          const TabsScreen(),
                                       transitionsBuilder: (context, animation,
                                           secondaryAnimation, child) {
                                         return FadeTransition(
