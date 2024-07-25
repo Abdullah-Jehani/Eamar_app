@@ -34,7 +34,7 @@ class _ButtonWidgetState extends State<ButtonWidget> {
       },
       style: ButtonStyle(
         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-          const EdgeInsets.symmetric(horizontal: 14), // Add the desired padding
+          const EdgeInsets.symmetric(horizontal: 14),
         ),
         backgroundColor: MaterialStateProperty.all<Color>(primaryColor),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(

@@ -41,8 +41,8 @@ class _CenterScreenState extends State<CenterScreen> {
       results = allReports;
     } else {
       results = allReports.where((report) {
-        String issueType = report["report_classification_id"].toString() ?? "";
-        String issueSpecific = report["description"] ?? "";
+        String issueType = report["report_classification"]["name"].toString();
+        String issueSpecific = report["sub_classification"]["name"].toString();
 
         return issueType.toLowerCase().contains(enteredKeyword.toLowerCase()) ||
             issueSpecific.toLowerCase().contains(enteredKeyword.toLowerCase());
@@ -130,33 +130,24 @@ class _CenterScreenState extends State<CenterScreen> {
                   ),
                   Flexible(
                     child: displayedReports.isNotEmpty
-                        ? GestureDetector(
-                            onTap: () {
-                              Navigator.pushAndRemoveUntil(
-                                context,
-                                CupertinoPageRoute(
-                                    builder: (context) =>
-                                        const ReportDetails()),
-                                (route) => false,
+                        ? ListView.builder(
+                            itemCount: displayedReports.length,
+                            itemBuilder: (context, index) {
+                              final report = displayedReports[index];
+                              int days = calculateDaysSince(report[
+                                  "created_at"]); // Calculate days since created
+
+                              return ReportCard(
+                                key: ValueKey(report["id"]),
+                                issueType: report["report_classification_id"]
+                                    .toString(), // Ensure it matches the expected type
+                                issueDetail:
+                                    report["description"] ?? 'No Issue Details',
+                                days: days,
+                                report:
+                                    report, // Pass the entire report data to the ReportCard
                               );
                             },
-                            child: ListView.builder(
-                              itemCount: displayedReports.length,
-                              itemBuilder: (context, index) {
-                                final report = displayedReports[index];
-                                int days = calculateDaysSince(report[
-                                    "created_at"]); // Calculate days since created
-
-                                return ReportCard(
-                                  key: ValueKey(report["id"]),
-                                  issueType: report["report_classification_id"]
-                                      .toString(), // Ensure it matches the expected type
-                                  issueDetail: report["description"] ??
-                                      'No Issue Details',
-                                  days: days,
-                                );
-                              },
-                            ),
                           )
                         : Padding(
                             padding: EdgeInsets.only(bottom: size.height * .1),

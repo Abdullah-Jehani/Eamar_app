@@ -191,23 +191,26 @@ class _FirstScreenState extends State<FirstScreen> {
                     return ReportCardWidget(
                       image: reports[index]['image']!,
                       text: reports[index]['text']!,
-                      id: reports[index]['id'], // Pass id to the widget
+                      id: reports[index]['id'],
                       onTap: () {
-                        // Get the ReportProvider instance from context
-                        final reportProvider =
-                            Provider.of<ReportProvider>(context, listen: false);
-                        // Update the selected id
+                        final reportProvider = Provider.of<ReportProvider>(context, listen: false);
+
+                        // Update the selected ID and name
                         reportProvider.selectedId = reports[index]['id'];
                         reportProvider.selectedName = reports[index]['text'];
+
+                        // Fetch sub-classifications for the selected report ID
+                        reportProvider.fetchSubClassifications(reports[index]['id']);
 
                         setState(() {
                           selectedIndex = index;
                         });
+
                         Navigator.pushAndRemoveUntil(
-                            context,
-                            CupertinoPageRoute(
-                                builder: (context) => const CameraScreen()),
-                            (route) => false);
+                          context,
+                          CupertinoPageRoute(builder: (context) => const CameraScreen()),
+                          (route) => false
+                        );
                       },
                       isSelected: selectedIndex == index,
                     );

@@ -4,17 +4,21 @@ import 'package:eamar_app/widgets/home/button_widget.dart';
 import 'package:flutter/material.dart';
 
 class ReportCard extends StatefulWidget {
-  const ReportCard(
-      {super.key,
-      required this.issueType,
-      required this.issueDetail,
-      required this.days});
+  const ReportCard({
+    super.key,
+    required this.issueType,
+    required this.issueDetail,
+    required this.days,
+    required this.report,
+  });
 
-  @override
-  State<ReportCard> createState() => _ReportCardState();
   final String issueType;
   final String issueDetail;
   final int days;
+  final Map<String, dynamic> report;
+
+  @override
+  State<ReportCard> createState() => _ReportCardState();
 }
 
 class _ReportCardState extends State<ReportCard> {
@@ -84,9 +88,9 @@ class _ReportCardState extends State<ReportCard> {
                     SizedBox(
                       height: size.height * 0.025,
                     ),
-                    const ButtonWidget(
-                      route: ReportDetails(),
+                    ButtonWidget(
                       text: 'عرض بيانات البلاغ',
+                      route: ReportDetails(report: widget.report),
                     ),
                   ],
                 ),

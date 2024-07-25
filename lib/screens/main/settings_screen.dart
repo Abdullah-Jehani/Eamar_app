@@ -41,6 +41,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           width: 64,
                           height: 64,
                           fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Icon(
+                              Icons
+                                  .error, // You can choose a different icon if you prefer
+                              size: 48,
+                              color: Colors.grey,
+                            );
+                          },
                         ),
                       ),
                       SizedBox(

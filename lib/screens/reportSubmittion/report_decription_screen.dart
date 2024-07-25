@@ -71,7 +71,6 @@ class _ReportDescriptionState extends State<ReportDescription> {
                     child: TextField(
                       maxLength: 180,
                       controller: descriptionController,
-                      // Remove 'expands: false'
                       maxLines: 4, // Allow unlimited lines
                       style: TextStyle(
                           color: textColor, fontFamily: 'cairo', fontSize: 14),
@@ -84,7 +83,6 @@ class _ReportDescriptionState extends State<ReportDescription> {
                           fontSize: 14,
                         ),
                       ),
-                      // Add this to the TextField itself for the input text
                       textDirection: TextDirection.rtl,
                     ),
                   ),
@@ -136,36 +134,44 @@ class _ReportDescriptionState extends State<ReportDescription> {
                     height: size.height * .095,
                   ),
                   GestureDetector(
-                      onTap: () {
-                        if (isClicked &&
-                            descriptionController.text.isNotEmpty) {
-                          report.description = descriptionController.text;
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              CupertinoPageRoute(
-                                  builder: (context) => const LastSreen()),
-                              (route) => false);
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              showCloseIcon: true,
-                              content: Text(
-                                textAlign: TextAlign.right,
-                                'الرجاء ادخال وصف للبلاغ',
-                                style: TextStyle(
-                                    fontFamily: 'cairo', fontSize: 14),
-                              ),
+                    onTap: () async {
+                      if (isClicked && descriptionController.text.isNotEmpty) {
+                        // Update the report provider with the description
+                        report.description = descriptionController.text;
+
+                        // Call the submitReport method to submit the data
+                        await report.submitReport();
+
+                        // Navigate to the next screen if the report is submitted successfully
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          CupertinoPageRoute(
+                            builder: (context) => const LastSreen(),
+                          ),
+                          (route) => false,
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            showCloseIcon: true,
+                            content: Text(
+                              textAlign: TextAlign.right,
+                              'الرجاء ادخال وصف للبلاغ',
+                              style:
+                                  TextStyle(fontFamily: 'cairo', fontSize: 14),
                             ),
-                          );
-                        }
-                      },
-                      child: ReportButton(
-                        text: 'تقديم البلاغ',
-                        bgColor:
-                            isClicked && descriptionController.text.isNotEmpty
-                                ? primaryColor
-                                : greyColor,
-                      ))
+                          ),
+                        );
+                      }
+                    },
+                    child: ReportButton(
+                      text: 'تقديم البلاغ',
+                      bgColor:
+                          isClicked && descriptionController.text.isNotEmpty
+                              ? primaryColor
+                              : greyColor,
+                    ),
+                  ),
                 ],
               ),
             ),

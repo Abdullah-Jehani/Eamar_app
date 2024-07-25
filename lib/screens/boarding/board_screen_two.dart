@@ -31,6 +31,8 @@ class _BoardScreenTwoState extends State<BoardScreenTwo> {
               widths: [10.0, size.width * .20, 10.0],
               onClickNext: () {
                 setState(() {
+                  auth.isFirstTime == false;
+                  auth.setFirstTime(false);
                   Navigator.pushAndRemoveUntil(
                     context,
                     PageRouteBuilder(

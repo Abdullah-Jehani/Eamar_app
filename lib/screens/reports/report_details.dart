@@ -5,7 +5,9 @@ import 'package:eamar_app/widgets/report/row_widget.dart';
 import 'package:flutter/material.dart';
 
 class ReportDetails extends StatefulWidget {
-  const ReportDetails({super.key});
+  final Map<String, dynamic> report;
+
+  const ReportDetails({super.key, required this.report});
 
   @override
   State<ReportDetails> createState() => _ReportDetailsState();
@@ -54,20 +56,31 @@ class _ReportDetailsState extends State<ReportDetails> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 textDirection: TextDirection.rtl,
                 children: [
-                  ReportStatus(bgColor: caution, text: 'معلق'),
+                  ReportStatus(
+                    bgColor: widget.report['status'] == 'Pinned'
+                        ? caution
+                        : widget.report['status'] == 'Completed'
+                            ? success
+                            : danger,
+                    text: widget.report['status'] == 'Pinned'
+                        ? 'قيد المراجعة'
+                        : widget.report['status'] == 'Completed'
+                            ? 'تم الانتهاء'
+                            : 'مرفوض',
+                  ),
                   SizedBox(
                     height: size.height * .04,
                   ),
-                  const RowWidget(
+                  RowWidget(
                     headLine: 'تصنيف البلاغ',
-                    subHead: 'الأنارة والمرافق الخدمية',
+                    subHead: widget.report['report_classification'].toString(),
                   ),
                   SizedBox(
                     height: size.height * .04,
                   ),
-                  const RowWidget(
+                  RowWidget(
                     headLine: 'التصنيف التخصصي',
-                    subHead: 'أعمدة الأنارة',
+                    subHead: widget.report['sub_classification_id'].toString(),
                   ),
                   SizedBox(
                     height: size.height * .04,
@@ -85,8 +98,8 @@ class _ReportDetailsState extends State<ReportDetails> {
                         height: size.height * .009,
                       ),
                       Text(
+                        widget.report['description'] ?? '',
                         textAlign: TextAlign.right,
-                        'حتى تم, احداث سبتمبر ٣٠ جهة. هو تحت ليبين بمعارضة كما الشتاء للسيطرة, في إجلاء أجزاء الإنزال بحق. مكّن  من يكن قررت هاربر تغييرات, وتم إذ كردة الأرض الإمتعاض. بها هو دفّة إعلان لتقليعة, لم معقل استرجاع قبل. قد ',
                         style: TextStyle(
                             color: textColor,
                             fontFamily: 'cairo',
@@ -97,23 +110,24 @@ class _ReportDetailsState extends State<ReportDetails> {
                   SizedBox(
                     height: size.height * .04,
                   ),
-                  const RowWidget(
+                  RowWidget(
                     headLine: 'مرسل البلاغ',
-                    subHead: 'عبدالله الجهاني',
+                    subHead:
+                        '${widget.report['first_name']} ${widget.report['last_name']}',
                   ),
                   SizedBox(
                     height: size.height * .04,
                   ),
-                  const RowWidget(
+                  RowWidget(
                     headLine: 'موقع البلاغ',
-                    subHead: 'بنغازي - الهواري ',
+                    subHead: widget.report['location_name'] ?? '',
                   ),
                   SizedBox(
                     height: size.height * .04,
                   ),
-                  const RowWidget(
+                  RowWidget(
                     headLine: 'تاريخ البلاغ',
-                    subHead: '02/09/2024',
+                    subHead: widget.report['created_at'] ?? '',
                   ),
                   SizedBox(
                     height: size.height * .1,
@@ -123,10 +137,10 @@ class _ReportDetailsState extends State<ReportDetails> {
                     '.بمجرد تقديم التقرير، سيتم إحالته للسلطات المحلية للمراجعة والتحقق. يتطلب حل المشكلة المبلغ عنها وقتًا قد يختلف حسب طبيعة المشكلة وأولويتها. نشكرك على صبرك وتفهمك أثناء انتظار الإجراءات المناسبة',
                     style: TextStyle(
                         color: textColor, fontSize: 12, fontFamily: 'cairo'),
-                  )
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
