@@ -44,27 +44,40 @@ class ScreenRouter extends StatefulWidget {
 class _ScreenRouterState extends State<ScreenRouter> {
   @override
   void initState() {
-    const TabsScreen();
-    Provider.of<AuthProvider>(context, listen: false).initAuthentication();
-    Provider.of<AuthProvider>(context, listen: false).checkFirstTime();
-    Provider.of<AuthProvider>(context, listen: false).loadUserData();
     super.initState();
+    _initializeApp();
+  }
+
+  Future<void> _initializeApp() async {
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    await authProvider.initAuthentication();
+    await authProvider.checkFirstTime();
+    await authProvider.loadUserData();
+    // Navigate based on the state
+    if (authProvider.isFirstTime) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const BoardScreenOne()),
+      );
+    } else if (authProvider.isAuthenticated == true) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const TabsScreen()),
+      );
+    } else {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginScreen()),
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AuthProvider>(builder: (context, auth, _) {
-      return auth.isLoading == null
-          ? const Scaffold(
-              body: Center(
-                child: CircularProgressIndicator(),
-              ),
-            )
-          : auth.isFirstTime
-              ? const BoardScreenOne()
-              : auth.isAuthenticated!
-                  ? const TabsScreen()
-                  : const LoginScreen();
-    });
+    return Scaffold(
+      body: Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
   }
 }

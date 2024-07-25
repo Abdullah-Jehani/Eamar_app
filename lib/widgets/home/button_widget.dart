@@ -7,15 +7,24 @@ class ButtonWidget extends StatefulWidget {
   @override
   State<ButtonWidget> createState() => _ButtonWidgetState();
   final String text;
-  final Widget? route;
+  final Widget? route; // This can be null
 }
 
 class _ButtonWidgetState extends State<ButtonWidget> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return TextButton(
       onPressed: () {
+        if (widget.route == null) {
+          // Handle the case where route is null
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('No route provided')),
+          );
+          return;
+        }
+
         Navigator.push(
           context,
           PageRouteBuilder(
@@ -28,7 +37,8 @@ class _ButtonWidgetState extends State<ButtonWidget> {
                 child: child,
               );
             },
-            transitionDuration: const Duration(milliseconds: 01),
+            transitionDuration: const Duration(
+                milliseconds: 200), // Adjust the duration if needed
           ),
         );
       },

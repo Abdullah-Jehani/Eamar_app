@@ -30,26 +30,23 @@ class _BoardScreenTwoState extends State<BoardScreenTwo> {
               colors: [greyColor, primaryColor, greyColor],
               widths: [10.0, size.width * .20, 10.0],
               onClickNext: () {
-                setState(() {
-                  auth.isFirstTime == false;
-                  auth.setFirstTime(false);
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    PageRouteBuilder(
-                      pageBuilder: (context, animation, secondaryAnimation) =>
-                          const BoardScreenThree(),
-                      transitionsBuilder:
-                          (context, animation, secondaryAnimation, child) {
-                        return FadeTransition(
-                          opacity: animation,
-                          child: child,
-                        );
-                      },
-                      transitionDuration: const Duration(milliseconds: 90),
-                    ),
-                    (route) => false,
-                  );
-                });
+                auth.setFirstTime(false);
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        const BoardScreenThree(),
+                    transitionsBuilder:
+                        (context, animation, secondaryAnimation, child) {
+                      return FadeTransition(
+                        opacity: animation,
+                        child: child,
+                      );
+                    },
+                    transitionDuration: const Duration(milliseconds: 90),
+                  ),
+                  (route) => false,
+                );
               },
               onClickSkip: () {
                 setState(() {

@@ -15,7 +15,7 @@ class _ReportStatusState extends State<ReportStatus> {
     return Container(
       decoration: BoxDecoration(
         color: widget.bgColor,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(12),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),

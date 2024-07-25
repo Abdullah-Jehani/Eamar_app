@@ -1,6 +1,8 @@
 import 'package:eamar_app/helpers/colors.dart';
 import 'package:eamar_app/providers/report_provider.dart';
+import 'package:eamar_app/screens/reportSubmittion/first_screen.dart';
 import 'package:eamar_app/screens/reports/report_details.dart';
+import 'package:eamar_app/screens/secondary/tabs_screen.dart';
 import 'package:eamar_app/widgets/center/card_widget.dart';
 import 'package:eamar_app/widgets/home/button_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -41,10 +43,16 @@ class _CenterScreenState extends State<CenterScreen> {
       results = allReports;
     } else {
       results = allReports.where((report) {
-        String issueType = report["report_classification"]["name"].toString();
-        String issueSpecific = report["sub_classification"]["name"].toString();
+        String issueType =
+            report["classification_name"].toString(); // Use classification name
+        String subClassification = report["sub_classification_name"]
+            .toString(); // Use sub-classification name
+        String issueSpecific = report["description"].toString();
 
         return issueType.toLowerCase().contains(enteredKeyword.toLowerCase()) ||
+            subClassification
+                .toLowerCase()
+                .contains(enteredKeyword.toLowerCase()) ||
             issueSpecific.toLowerCase().contains(enteredKeyword.toLowerCase());
       }).toList();
     }
@@ -139,10 +147,11 @@ class _CenterScreenState extends State<CenterScreen> {
 
                               return ReportCard(
                                 key: ValueKey(report["id"]),
-                                issueType: report["report_classification_id"]
-                                    .toString(), // Ensure it matches the expected type
-                                issueDetail:
-                                    report["description"] ?? 'No Issue Details',
+                                issueType: report["classification_name"]
+                                    .toString(), // Use classification name
+                                issueDetail: report["sub_classification_name"]
+                                    .toString(), // Use sub-classification name
+
                                 days: days,
                                 report:
                                     report, // Pass the entire report data to the ReportCard
@@ -197,7 +206,10 @@ class _CenterScreenState extends State<CenterScreen> {
                   SizedBox(height: size.height * .04),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: size.width * .3),
-                    child: const ButtonWidget(text: 'ارفع بلاغ'),
+                    child: const ButtonWidget(
+                      text: 'ارفع بلاغ',
+                      route: FirstScreen(),
+                    ),
                   ),
                 ],
               ),

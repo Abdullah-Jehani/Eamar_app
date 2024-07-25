@@ -1,8 +1,13 @@
 import 'package:eamar_app/helpers/colors.dart';
+import 'package:eamar_app/screens/secondary/tabs_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
+import 'package:eamar_app/providers/report_provider.dart';
+import 'package:eamar_app/widgets/report/row_widget.dart';
+import 'package:eamar_app/widgets/reportSubmittions/button_widget.dart';
 import 'package:eamar_app/widgets/helper/close_widget.dart';
 import 'package:eamar_app/widgets/helper/report_status.dart';
-import 'package:eamar_app/widgets/report/row_widget.dart';
-import 'package:flutter/material.dart';
 
 class ReportDetails extends StatefulWidget {
   final Map<String, dynamic> report;
@@ -14,9 +19,18 @@ class ReportDetails extends StatefulWidget {
 }
 
 class _ReportDetailsState extends State<ReportDetails> {
+  String formatDate(String dateStr) {
+    final dateTime = DateTime.parse(dateStr);
+    final formattedDate = dateTime.toString().split(' ').first;
+    return formattedDate;
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final String status = widget.report['status'];
+    final bool isPinned = status == 'Pinned';
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -48,7 +62,7 @@ class _ReportDetailsState extends State<ReportDetails> {
               ],
             ),
             SizedBox(
-              height: size.height * .03,
+              height: size.height * .05,
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width * .035),
@@ -57,30 +71,36 @@ class _ReportDetailsState extends State<ReportDetails> {
                 textDirection: TextDirection.rtl,
                 children: [
                   ReportStatus(
-                    bgColor: widget.report['status'] == 'Pinned'
+                    bgColor: isPinned
                         ? caution
-                        : widget.report['status'] == 'Completed'
-                            ? success
-                            : danger,
-                    text: widget.report['status'] == 'Pinned'
+                        : (status == 'Completed' ? success : danger),
+                    text: isPinned
                         ? 'قيد المراجعة'
-                        : widget.report['status'] == 'Completed'
-                            ? 'تم الانتهاء'
-                            : 'مرفوض',
+                        : (status == 'Completed' ? 'تم الانهاء' : 'مرفوض'),
                   ),
                   SizedBox(
                     height: size.height * .04,
                   ),
                   RowWidget(
                     headLine: 'تصنيف البلاغ',
-                    subHead: widget.report['report_classification'].toString(),
+                    subHead: Text(
+                      widget.report['classification_name'].toString(),
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                          fontSize: 16, fontFamily: 'cairo', color: textColor),
+                    ),
                   ),
                   SizedBox(
                     height: size.height * .04,
                   ),
                   RowWidget(
                     headLine: 'التصنيف التخصصي',
-                    subHead: widget.report['sub_classification_id'].toString(),
+                    subHead: Text(
+                      widget.report['sub_classification_name'].toString(),
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                          fontSize: 16, fontFamily: 'cairo', color: textColor),
+                    ),
                   ),
                   SizedBox(
                     height: size.height * .04,
@@ -112,31 +132,121 @@ class _ReportDetailsState extends State<ReportDetails> {
                   ),
                   RowWidget(
                     headLine: 'مرسل البلاغ',
-                    subHead:
-                        '${widget.report['first_name']} ${widget.report['last_name']}',
+                    subHead: Text(
+                      '${widget.report['first_name']} ${widget.report['last_name']}',
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                          fontSize: 16, fontFamily: 'cairo', color: textColor),
+                    ),
                   ),
                   SizedBox(
                     height: size.height * .04,
                   ),
                   RowWidget(
                     headLine: 'موقع البلاغ',
-                    subHead: widget.report['location_name'] ?? '',
+                    subHead: Text(
+                      widget.report['location_name'] ?? '',
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                          fontSize: 16, fontFamily: 'cairo', color: textColor),
+                    ),
                   ),
                   SizedBox(
                     height: size.height * .04,
                   ),
                   RowWidget(
                     headLine: 'تاريخ البلاغ',
-                    subHead: widget.report['created_at'] ?? '',
+                    subHead: Text(
+                      formatDate(widget.report['created_at']),
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                          fontSize: 16, fontFamily: 'cairo', color: textColor),
+                    ),
                   ),
                   SizedBox(
-                    height: size.height * .1,
+                    height: size.height * .04,
+                  ),
+                  if (!isPinned)
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      textDirection: TextDirection.rtl,
+                      children: [
+                        Text(
+                          ' :الرد علي البلاغ',
+                          style: TextStyle(
+                              color: darkBlue,
+                              fontSize: 18,
+                              fontFamily: 'cairo'),
+                        ),
+                        SizedBox(
+                          height: size.height * .009,
+                        ),
+                        Text(
+                          widget.report['feedback'] ?? '',
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                              color: textColor,
+                              fontFamily: 'cairo',
+                              fontSize: 16),
+                        )
+                      ],
+                    ),
+                  SizedBox(
+                    height: size.height * .05,
                   ),
                   Text(
                     textAlign: TextAlign.right,
                     '.بمجرد تقديم التقرير، سيتم إحالته للسلطات المحلية للمراجعة والتحقق. يتطلب حل المشكلة المبلغ عنها وقتًا قد يختلف حسب طبيعة المشكلة وأولويتها. نشكرك على صبرك وتفهمك أثناء انتظار الإجراءات المناسبة',
                     style: TextStyle(
                         color: textColor, fontSize: 12, fontFamily: 'cairo'),
+                  ),
+                  SizedBox(
+                    height: size.height * .04,
+                  ),
+                  if (!isPinned)
+                    GestureDetector(
+                      onTap: () async {
+                        final reportProvider =
+                            Provider.of<ReportProvider>(context, listen: false);
+                        final reportId = widget.report['id'];
+                        final bool isSuccess =
+                            await reportProvider.deleteReport(reportId);
+
+                        if (isSuccess) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              showCloseIcon: true,
+                              content: Text(
+                                'تم حذف البلاغ',
+                                style: TextStyle(
+                                    color: Colors.white, fontFamily: 'cairo'),
+                              ),
+                            ),
+                          );
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => TabsScreen()),
+                            (route) => false,
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                  'حدث خطأ أثناء حذف البلاغ , الرجاء التحقق من الاتصال بالانترنت',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'cairo')),
+                            ),
+                          );
+                        }
+                      },
+                      child: const ReportButton(
+                        text: 'اغلاق البلاغ',
+                      ),
+                    ),
+                  SizedBox(
+                    height: size.height * .02,
                   ),
                 ],
               ),

@@ -55,7 +55,7 @@ class _ReportCardWidgetState extends State<ReportCardWidget> {
                       child: Column(
                         children: [
                           SizedBox(
-                            height: size.height * .009,
+                            height: size.height * .08,
                           ),
                           Padding(
                             padding: EdgeInsets.symmetric(

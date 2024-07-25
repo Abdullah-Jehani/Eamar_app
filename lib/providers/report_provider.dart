@@ -29,6 +29,7 @@ class ReportProvider with ChangeNotifier {
   String? title;
   String? phoneNumber;
   String? description;
+  bool isSuccessed = false;
 
   bool _isLocating = false;
   bool get isLocating => _isLocating;
@@ -77,65 +78,84 @@ class ReportProvider with ChangeNotifier {
     print('All data cleared'); // Debug print
   }
 
- Future<void> fetchReports() async {
-  try {
-    final response = await api.get('user-reports');
-    if (kDebugMode) {
-      print('Response Status: ${response.statusCode}');
-      print('Response Body: ${response.body}');
-    }
+  Future<void> fetchReports() async {
+    try {
+      final response = await api.get('user-reports');
+      if (kDebugMode) {
+        print('Response Status: ${response.statusCode}');
+        print('Response Body: ${response.body}');
+      }
 
-    if (response.statusCode == 200) {
-      final body = json.decode(response.body);
-      final reportsData = body['reports'] as List<dynamic>;
+      if (response.statusCode == 200) {
+        final body = json.decode(response.body);
+        final reportsData = body['reports'] as List<dynamic>;
 
-      _reports = reportsData.map((item) {
-        final report = item as Map<String, dynamic>;
+        _reports = reportsData.map((item) {
+          final report = item as Map<String, dynamic>;
 
-        // Ensure integer fields are properly parsed
-        final id = (report['id'] as int?) ?? 0;
-        final userId = (report['user_id'] as int?) ?? 0;
-        final _selectedReportId =
-            (report['report_classification_id'] as int?) ?? 0;
-        final subClassificationId =
-            (report['sub_classification_id'] as int?) ?? 0;
+          // Ensure integer fields are properly parsed
+          final id = (report['id'] as int?) ?? 0;
+          final userId = (report['user_id'] as int?) ?? 0;
+          final reportClassificationId =
+              (report['report_classification_id'] as int?) ?? 0;
+          final subClassificationId =
+              (report['sub_classification_id'] as int?) ?? 0;
 
-        // Ensure latitude and longitude are properly parsed
-        final latitude =
-            double.tryParse(report['latitude']?.toString() ?? '0.0') ?? 0.0;
-        final longitude =
-            double.tryParse(report['longitude']?.toString() ?? '0.0') ?? 0.0;
+          // Ensure latitude and longitude are properly parsed
+          final latitude =
+              double.tryParse(report['latitude']?.toString() ?? '0.0') ?? 0.0;
+          final longitude =
+              double.tryParse(report['longitude']?.toString() ?? '0.0') ?? 0.0;
 
-        return {
-          'id': id,
-          'user_id': userId,
-          'report_classification_id': _selectedReportId, // Correctly use the classification ID
-          'sub_classification_id': subClassificationId,
-          'report_image': report['report_image'] ?? '',
-          'location_name': report['location_name'] ?? '',
-          'latitude': latitude,
-          'longitude': longitude,
-          'description': report['description'] ?? '',
-          'first_name': report['first_name'] ?? '',
-          'last_name': report['last_name'] ?? '',
-          'phone_number': report['phone_number'] ?? '',
-          'status': report['status'] ?? '',
-          'feedback': report['feedback'],
-          'created_at': report['created_at'] ?? '',
-          'updated_at': report['updated_at'] ?? '',
-        };
-      }).toList();
-      notifyListeners();
-    } else {
-      throw Exception('Failed to load reports');
-    }
-  } catch (e) {
-    if (kDebugMode) {
-      print('Error fetching reports: $e');
+          // Access the classification name and sub-classification name
+          final reportClassification =
+              report['report_classification'] as Map<String, dynamic>?;
+          final classificationName = reportClassification?['name'] ?? 'Unknown';
+
+          final subClassification =
+              report['sub_classification'] as Map<String, dynamic>?;
+          final subClassificationName = subClassification?['name'] ?? 'Unknown';
+
+          // Print the classification name and sub-classification name in debug console
+          if (kDebugMode) {
+            print(
+                'Report ID: $id, Classification Name: $classificationName, Sub-Classification Name: $subClassificationName');
+          }
+
+          return {
+            'id': id,
+            'user_id': userId,
+            'report_classification_id':
+                reportClassificationId, // Correctly use the classification ID
+            'sub_classification_id': subClassificationId,
+            'report_image': report['report_image'] ?? '',
+            'location_name': report['location_name'] ?? '',
+            'latitude': latitude,
+            'longitude': longitude,
+            'description': report['description'] ?? '',
+            'first_name': report['first_name'] ?? '',
+            'last_name': report['last_name'] ?? '',
+            'phone_number': report['phone_number'] ?? '',
+            'status': report['status'] ?? '',
+            'feedback': report['feedback'],
+            'created_at': report['created_at'] ?? '',
+            'updated_at': report['updated_at'] ?? '',
+            'classification_name':
+                classificationName, // Add classification name to report data
+            'sub_classification_name':
+                subClassificationName, // Add sub-classification name to report data
+          };
+        }).toList();
+        notifyListeners();
+      } else {
+        throw Exception('Failed to load reports');
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error fetching reports: $e');
+      }
     }
   }
-}
-
 
   Future<void> fetchSubClassifications(int parentId) async {
     try {
@@ -243,5 +263,40 @@ class ReportProvider with ChangeNotifier {
         print('Error submitting report: $e');
       }
     }
+  }
+
+  Future<bool> deleteReport(int reportId) async {
+    try {
+      final uri = Uri.parse('http://192.168.1.6:8080/api/reports/$reportId');
+      final response = await http.delete(uri, headers: await _getHeaders());
+
+      if (kDebugMode) {
+        print('Delete Report Status: ${response.statusCode}');
+        print('Delete Report Body: ${response.body}');
+      }
+
+      if (response.statusCode == 200) {
+        // Handle successful deletion
+        _reports.removeWhere((report) => report['id'] == reportId);
+        notifyListeners();
+        return true; // Indicate success
+      } else {
+        throw Exception('Failed to delete report');
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error deleting report: $e');
+      }
+      return false; // Indicate failure
+    }
+  }
+
+  Future<Map<String, String>> _getHeaders() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    return {
+      'Authorization': 'Bearer $token',
+      'Content-Type': 'application/json',
+    };
   }
 }
