@@ -4,7 +4,6 @@ import 'package:eamar_app/screens/reportSubmittion/location_screen.dart';
 import 'package:eamar_app/widgets/reportSubmittions/custom_close_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 class ReportCardWidget extends StatefulWidget {
@@ -88,13 +87,12 @@ class _ReportCardWidgetState extends State<ReportCardWidget> {
 class ClassificationScreen extends StatefulWidget {
   const ClassificationScreen({super.key});
   @override
-  @override
   State<ClassificationScreen> createState() => _ClassificationScreenState();
 }
 
-int? selectedIndex;
-
 class _ClassificationScreenState extends State<ClassificationScreen> {
+  int? selectedIndex;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -117,11 +115,12 @@ class _ClassificationScreenState extends State<ClassificationScreen> {
               children: [
                 SizedBox(height: size.height * .09),
                 GestureDetector(
-                    onTap: () => {
-                          Provider.of<ReportProvider>(context, listen: false)
-                              .clearAllData(),
-                        },
-                    child: const CustomClose()),
+                  onTap: () => {
+                    Provider.of<ReportProvider>(context, listen: false)
+                        .clearAllData(),
+                  },
+                  child: const CustomClose(),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4),
                   child: Text(
@@ -138,33 +137,40 @@ class _ClassificationScreenState extends State<ClassificationScreen> {
                 if (reportProvider.isLocating)
                   Center(child: CircularProgressIndicator()),
                 if (reportProvider.subClassifications.isNotEmpty)
-                  Expanded(
-                    child: GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 20,
-                        mainAxisSpacing: 12,
+                  Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: Expanded(
+                      child: GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 20,
+                          mainAxisSpacing: 12,
+                        ),
+                        itemCount: reportProvider.subClassifications.length,
+                        itemBuilder: (context, index) {
+                          final subclassification =
+                              reportProvider.subClassifications[index];
+                          return ReportCardWidget(
+                            text: subclassification['name']!,
+                            id: subclassification['id'],
+                            onTap: () {
+                              setState(() {
+                                selectedIndex = index;
+                              });
+                              reportProvider.selectedClassId =
+                                  subclassification['id'];
+                              Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: (context) =>
+                                        const LocationScreen()),
+                              );
+                            },
+                            isSelected: selectedIndex == index,
+                          );
+                        },
                       ),
-                      itemCount: reportProvider.subClassifications.length,
-                      itemBuilder: (context, index) {
-                        final subclassification =
-                            reportProvider.subClassifications[index];
-                        return ReportCardWidget(
-                          text: subclassification['name']!,
-                          id: subclassification['id'],
-                          onTap: () {
-                            reportProvider.selectedClassId =
-                                subclassification['id'];
-                            Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                  builder: (context) => const LocationScreen()),
-                            );
-                          },
-                          isSelected: selectedIndex == index,
-                        );
-                      },
                     ),
                   ),
                 if (reportProvider.subClassifications.isEmpty &&

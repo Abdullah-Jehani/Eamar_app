@@ -1,7 +1,7 @@
 import 'package:eamar_app/helpers/colors.dart';
 import 'package:eamar_app/providers/report_provider.dart';
 import 'package:eamar_app/screens/reportSubmittion/report_decription_screen.dart';
-import 'package:eamar_app/widgets/register/input_field_widget.dart';
+import 'package:eamar_app/widgets/reportSubmittion/report_input_field.dart';
 import 'package:eamar_app/widgets/reportSubmittions/button_widget.dart';
 import 'package:eamar_app/widgets/reportSubmittions/custom_close_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,16 +16,16 @@ class PersonalInfo extends StatefulWidget {
   State<PersonalInfo> createState() => _PersonalInfoState();
 }
 
-TextEditingController userNameController = TextEditingController();
-TextEditingController titlNameController = TextEditingController();
-TextEditingController phoneNumberController = TextEditingController();
-
 class _PersonalInfoState extends State<PersonalInfo> {
+  final TextEditingController userNameController = TextEditingController();
+  final TextEditingController titlNameController = TextEditingController();
+  final TextEditingController phoneNumberController = TextEditingController();
   bool _isButtonEnabled = false;
 
   @override
   void initState() {
     super.initState();
+    _resetControllers();
     _updateButtonState();
 
     userNameController.addListener(() {
@@ -37,6 +37,20 @@ class _PersonalInfoState extends State<PersonalInfo> {
     phoneNumberController.addListener(() {
       _updateButtonState();
     });
+  }
+
+  void _resetControllers() {
+    userNameController.clear();
+    titlNameController.clear();
+    phoneNumberController.clear();
+  }
+
+  @override
+  void dispose() {
+    userNameController.dispose();
+    titlNameController.dispose();
+    phoneNumberController.dispose();
+    super.dispose();
   }
 
   void _updateButtonState() {
@@ -51,7 +65,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
     if (phoneNumber.length != 10) {
       return false;
     }
-    final allowedPrefixes = ['091', '092', '094', '095'];
+    final allowedPrefixes = ['091', '092', '094', '093'];
     return allowedPrefixes.any((prefix) => phoneNumber.startsWith(prefix));
   }
 
@@ -103,7 +117,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: size.width * .070),
-                  child: InputFieldWidget(
+                  child: ReportInpufField(
                     isArabic: true,
                     text: ' ثلاثة احرف عربية علي الاقل',
                     controller: userNameController,
@@ -135,7 +149,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: size.width * .070),
-                  child: InputFieldWidget(
+                  child: ReportInpufField(
                     controller: titlNameController,
                     isPassword: false,
                     isArabic: true,
@@ -164,7 +178,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: size.width * .070),
-                  child: InputFieldWidget(
+                  child: ReportInpufField(
                     isArabic: false,
                     text: '09XXXXXXXX',
                     controller: phoneNumberController,

@@ -32,6 +32,9 @@ class _CenterScreenState extends State<CenterScreen> {
     await reportProvider.fetchReports();
     setState(() {
       allReports = reportProvider.reports;
+      // Sort allReports by created_at in descending order
+      allReports.sort((a, b) => DateTime.parse(b['created_at'])
+          .compareTo(DateTime.parse(a['created_at'])));
       displayedReports =
           allReports; // Initialize displayedReports with all reports
     });

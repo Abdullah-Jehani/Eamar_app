@@ -52,10 +52,10 @@ class ReportProvider with ChangeNotifier {
     print(
         'Selected Classification ID set to: $selectedClassificationId'); // Debug print
     notifyListeners();
-    if (value != null) {
-      // Fetch sub-classifications only if ID is not null
-      fetchSubClassifications(value);
-    }
+    // Remove this fetch call since it's not needed here
+    // if (value != null) {
+    //   fetchSubClassifications(value);
+    // }
   }
 
   void clearAllData() {
@@ -73,9 +73,8 @@ class ReportProvider with ChangeNotifier {
     phoneNumber = null;
     description = null;
 
-    // Notify listeners after clearing data
     notifyListeners();
-    print('All data cleared'); // Debug print
+    print('All data cleared');
   }
 
   Future<void> fetchReports() async {
@@ -93,7 +92,6 @@ class ReportProvider with ChangeNotifier {
         _reports = reportsData.map((item) {
           final report = item as Map<String, dynamic>;
 
-          // Ensure integer fields are properly parsed
           final id = (report['id'] as int?) ?? 0;
           final userId = (report['user_id'] as int?) ?? 0;
           final reportClassificationId =
@@ -101,13 +99,11 @@ class ReportProvider with ChangeNotifier {
           final subClassificationId =
               (report['sub_classification_id'] as int?) ?? 0;
 
-          // Ensure latitude and longitude are properly parsed
           final latitude =
               double.tryParse(report['latitude']?.toString() ?? '0.0') ?? 0.0;
           final longitude =
               double.tryParse(report['longitude']?.toString() ?? '0.0') ?? 0.0;
 
-          // Access the classification name and sub-classification name
           final reportClassification =
               report['report_classification'] as Map<String, dynamic>?;
           final classificationName = reportClassification?['name'] ?? 'Unknown';
@@ -116,7 +112,6 @@ class ReportProvider with ChangeNotifier {
               report['sub_classification'] as Map<String, dynamic>?;
           final subClassificationName = subClassification?['name'] ?? 'Unknown';
 
-          // Print the classification name and sub-classification name in debug console
           if (kDebugMode) {
             print(
                 'Report ID: $id, Classification Name: $classificationName, Sub-Classification Name: $subClassificationName');
@@ -167,18 +162,10 @@ class ReportProvider with ChangeNotifier {
       final response =
           await api.get('classifications/$parentId/subclassifications');
 
-      if (kDebugMode) {
-        print('Response Status: ${response.statusCode}');
-      }
-
       if (response.statusCode == 200) {
         final body = json.decode(response.body);
         final subclassificationsData =
             body['subclassifications'] as List<dynamic>;
-
-        if (kDebugMode) {
-          print('Fetched Sub-Classifications: $subclassificationsData');
-        }
 
         _subClassifications = subclassificationsData.map((item) {
           final subclassification = item as Map<String, dynamic>;
@@ -195,9 +182,6 @@ class ReportProvider with ChangeNotifier {
         throw Exception('Failed to load sub-classifications');
       }
     } catch (e) {
-      if (kDebugMode) {
-        print('Error fetching sub-classifications: $e');
-      }
       _isLocating = false;
       notifyListeners();
     }
@@ -213,12 +197,9 @@ class ReportProvider with ChangeNotifier {
       'phone_number': phoneNumber ?? '',
       'description': description ?? '',
       'report_classification_id': _selectedReportId?.toString() ?? '',
-      'sub_classification_id': _subClassifications.isNotEmpty
-          ? _subClassifications.first['id'].toString()
-          : '',
+      'sub_classification_id': selectedClassificationId?.toString() ??
+          '', // Use selectedClassificationId here
     };
-
-    print('Submitting Report with data: $data'); // Debug print
 
     try {
       var uri = Uri.parse('http://192.168.1.6:8080/api/reports');
@@ -227,14 +208,11 @@ class ReportProvider with ChangeNotifier {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String? token = prefs.getString('token');
       request.headers['Authorization'] = 'Bearer $token';
-      // Replace YOUR_ACCESS_TOKEN with the actual token
 
-      // Add text fields to the request
       data.forEach((key, value) {
         request.fields[key] = value;
       });
 
-      // Add image file to the request
       if (imagePath != null) {
         var imageFile = File(imagePath!);
         request.files.add(
@@ -244,25 +222,15 @@ class ReportProvider with ChangeNotifier {
       var streamedResponse = await request.send();
       var response = await http.Response.fromStream(streamedResponse);
 
-      if (kDebugMode) {
-        print('Response Status: ${response.statusCode}');
-        print('Response Body: ${response.body}');
-      }
-
       if (response.statusCode == 201) {
         final body = json.decode(response.body);
         print('Submit Report Response: ${body['message']}');
 
-        // Handle successful submission
-        clearAllData(); // Clear data if needed
+        clearAllData();
       } else {
-        throw Exception('Failed to submit report');
+        throw Exception('حدث خطأ اثناء تقديم التقرير');
       }
-    } catch (e) {
-      if (kDebugMode) {
-        print('Error submitting report: $e');
-      }
-    }
+    } catch (e) {}
   }
 
   Future<bool> deleteReport(int reportId) async {
@@ -279,15 +247,15 @@ class ReportProvider with ChangeNotifier {
         // Handle successful deletion
         _reports.removeWhere((report) => report['id'] == reportId);
         notifyListeners();
-        return true; // Indicate success
+        return true;
       } else {
-        throw Exception('Failed to delete report');
+        throw Exception('حدث خطأ اثناء حذف التقرير');
       }
     } catch (e) {
       if (kDebugMode) {
         print('Error deleting report: $e');
       }
-      return false; // Indicate failure
+      return false;
     }
   }
 

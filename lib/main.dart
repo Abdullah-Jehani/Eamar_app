@@ -59,7 +59,7 @@ class _ScreenRouterState extends State<ScreenRouter> {
         context,
         MaterialPageRoute(builder: (context) => const BoardScreenOne()),
       );
-    } else if (authProvider.isAuthenticated == true) {
+    } else if (authProvider.token != null) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const TabsScreen()),

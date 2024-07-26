@@ -187,7 +187,7 @@ class AuthProvider with ChangeNotifier {
         print("Unexpected Error: $e");
       }
       setLoading(false);
-      return [false, 'Error occurred while uploading data'];
+      return [false, 'حدث خطأ اثناء التسجيل'];
     }
   }
 
@@ -302,7 +302,7 @@ class AuthProvider with ChangeNotifier {
           return [true, ''];
         } else {
           setLoading(false);
-          return [false, 'User data is missing in the response'];
+          return [false, 'بيانات غير صحيحة'];
         }
       } else {
         var errorMessage = json.decode(response.body)['message'] ??
@@ -313,7 +313,7 @@ class AuthProvider with ChangeNotifier {
     } catch (e) {
       print('Error: $e'); // Debug logging
       setLoading(false);
-      return [false, 'Error occurred while updating data'];
+      return [false, 'حدث خطأ الرجاء التحقق من اتصالك بالانترنت'];
     }
   }
 }
