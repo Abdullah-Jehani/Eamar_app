@@ -197,8 +197,7 @@ class ReportProvider with ChangeNotifier {
       'phone_number': phoneNumber ?? '',
       'description': description ?? '',
       'report_classification_id': _selectedReportId?.toString() ?? '',
-      'sub_classification_id': selectedClassificationId?.toString() ??
-          '', // Use selectedClassificationId here
+      'sub_classification_id': selectedClassificationId?.toString() ?? '',
     };
 
     try {
@@ -207,16 +206,21 @@ class ReportProvider with ChangeNotifier {
 
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String? token = prefs.getString('token');
+      if (token == null) {
+        throw Exception('Token not found');
+      }
       request.headers['Authorization'] = 'Bearer $token';
 
       data.forEach((key, value) {
         request.fields[key] = value;
+        debugPrint('Adding field: $key = $value');
       });
 
       if (imagePath != null) {
         var imageFile = File(imagePath!);
         request.files.add(
             await http.MultipartFile.fromPath('report_image', imageFile.path));
+        debugPrint('Adding image: ${imageFile.path}');
       }
 
       var streamedResponse = await request.send();
@@ -224,13 +228,15 @@ class ReportProvider with ChangeNotifier {
 
       if (response.statusCode == 201) {
         final body = json.decode(response.body);
-        print('Submit Report Response: ${body['message']}');
-
+        debugPrint('Submit Report Response: ${body['message']}');
         clearAllData();
       } else {
-        throw Exception('حدث خطأ اثناء تقديم التقرير');
+        debugPrint('Failed to submit report: ${response.body}');
+        throw Exception('Failed to submit report: ${response.body}');
       }
-    } catch (e) {}
+    } catch (e) {
+      debugPrint('Error submitting report: $e');
+    }
   }
 
   Future<bool> deleteReport(int reportId) async {

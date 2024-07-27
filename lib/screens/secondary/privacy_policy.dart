@@ -17,6 +17,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: secondaryColor,
         title: GestureDetector(
           onTap: () {
             Navigator.pushAndRemoveUntil(

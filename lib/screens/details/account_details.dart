@@ -51,8 +51,8 @@ class _AccountDetailsState extends State<AccountDetails> {
       builder: (context, auth, _) {
         return Scaffold(
           appBar: AppBar(
-            shadowColor: Colors.white,
-            backgroundColor: Colors.white,
+            shadowColor: Colors.transparent,
+            backgroundColor: Colors.transparent,
             actions: [
               GestureDetector(
                 onTap: () {

@@ -54,7 +54,7 @@ class _ScreenRouterState extends State<ScreenRouter> {
     await authProvider.checkFirstTime();
     await authProvider.loadUserData();
     // Navigate based on the state
-    if (authProvider.isFirstTime) {
+    if (authProvider.isFirstTime && authProvider.token == null) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const BoardScreenOne()),
@@ -74,7 +74,7 @@ class _ScreenRouterState extends State<ScreenRouter> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: CircularProgressIndicator(),
       ),

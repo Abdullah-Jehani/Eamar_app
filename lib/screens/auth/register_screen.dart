@@ -47,8 +47,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Consumer<AuthProvider>(builder: (context, auth, _) {
       return Scaffold(
           appBar: AppBar(
-            shadowColor: Colors.white,
-            backgroundColor: Colors.white,
+            shadowColor: Colors.transparent,
+            backgroundColor: Colors.transparent,
             actions: [
               GestureDetector(
                 onTap: () {

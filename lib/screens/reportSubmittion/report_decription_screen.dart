@@ -139,10 +139,8 @@ class _ReportDescriptionState extends State<ReportDescription> {
                         // Update the report provider with the description
                         report.description = descriptionController.text;
 
-                        // Call the submitReport method to submit the data
                         await report.submitReport();
 
-                        // Navigate to the next screen if the report is submitted successfully
                         Navigator.pushAndRemoveUntil(
                           context,
                           CupertinoPageRoute(
