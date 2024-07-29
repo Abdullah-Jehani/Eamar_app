@@ -179,6 +179,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: size.width * .070),
                   child: ReportInpufField(
+                    isNumber: true,
                     isArabic: false,
                     text: '09XXXXXXXX',
                     controller: phoneNumberController,

@@ -101,6 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: EdgeInsets.only(
                     left: size.width * .070, right: size.width * .090),
                 child: InputFieldWidget(
+                    isEmail: true,
                     controller: emailController,
                     isPassword: false,
                     icon: const Icon(Icons.mail_rounded),
@@ -186,7 +187,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               });
                             } else {
                               SnackBar snackBar = const SnackBar(
-                                content: Text('Your input is invalid'),
+                                content: Text(
+                                    'البريد الالكتروني او كلمة المرور غير صحيحة'),
                               );
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(snackBar);

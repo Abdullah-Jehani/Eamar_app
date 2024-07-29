@@ -16,55 +16,58 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: secondaryColor,
-        title: GestureDetector(
-          onTap: () {
-            Navigator.pushAndRemoveUntil(
-              context,
-              PageRouteBuilder(
-                pageBuilder: (context, animation, secondaryAnimation) =>
-                    const AccountDetails(),
-                transitionsBuilder:
-                    (context, animation, secondaryAnimation, child) {
-                  return FadeTransition(
-                    opacity: animation,
-                    child: child,
-                  );
-                },
-                transitionDuration: const Duration(milliseconds: 90),
-              ),
-              (route) => false,
-            );
-          },
-          child: Expanded(
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 10, top: 4),
-                  child: Iconify(
-                    Uil.arrow_left,
-                    color: primaryColor,
-                    size: 30,
-                  ),
-                ),
-                Text(
-                  'الرجوع',
-                  style: TextStyle(
-                    color: primaryColor,
-                    fontFamily: 'cairo',
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(
+              height: size.height * .06,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: size.width * .05),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation, secondaryAnimation) =>
+                          const AccountDetails(),
+                      transitionsBuilder:
+                          (context, animation, secondaryAnimation, child) {
+                        return FadeTransition(
+                          opacity: animation,
+                          child: child,
+                        );
+                      },
+                      transitionDuration: const Duration(milliseconds: 90),
+                    ),
+                    (route) => false,
+                  );
+                },
+                child: Expanded(
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 10, top: 4),
+                        child: Iconify(
+                          Uil.arrow_left,
+                          color: primaryColor,
+                          size: 30,
+                        ),
+                      ),
+                      Text(
+                        'الرجوع',
+                        style: TextStyle(
+                          color: primaryColor,
+                          fontFamily: 'cairo',
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
             Image.asset(
               'assets/images/secondary/policyGuy.png',
               width: size.width * 1,

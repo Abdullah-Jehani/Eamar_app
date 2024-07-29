@@ -7,7 +7,6 @@ import 'package:eamar_app/widgets/register/input_field_widget.dart';
 import 'package:eamar_app/widgets/reportSubmittions/button_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:eamar_app/providers/auth_provider.dart';
 
@@ -126,6 +125,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: size.width * .070),
             child: InputFieldWidget(
+                isEmail: true,
                 controller: emailController,
                 isPassword: false,
                 icon: const Icon(Icons.email),
@@ -182,6 +182,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: size.width * .070),
             child: InputFieldWidget(
+              isNumber: true,
               isArabic: false,
               text: '09XXXXXXXX',
               controller: phoneNumberController,
@@ -200,7 +201,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   addressController.text.isEmpty ||
                   phoneNumberController.text.isEmpty) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('يجب تعبئة جميع الحقول')),
+                  const SnackBar(content: Text('يجب تعبئة جميع الحقول')),
                 );
                 return;
               }
@@ -227,7 +228,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                 // Show success SnackBar
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
+                  const SnackBar(
                     content: Text('تم تحديث بياناتك بنجاح'),
                     duration:
                         Duration(seconds: 2), // Ensure this matches the delay
@@ -235,7 +236,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 );
 
                 // Delay navigation until SnackBar is dismissed
-                Future.delayed(Duration(seconds: 2), () {
+                Future.delayed(const Duration(seconds: 2), () {
                   Navigator.pushAndRemoveUntil(
                     context,
                     CupertinoPageRoute(
@@ -251,7 +252,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             },
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width * .03),
-              child: ReportButton(
+              child: const ReportButton(
                 text: 'تحديث',
               ),
             ),

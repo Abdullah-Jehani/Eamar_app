@@ -91,7 +91,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     });
                   } else {
                     SnackBar snackBar = const SnackBar(
-                      content: Text('Your input is invalid'),
+                      content: Text('لقد قمت  بادخال بيانات غير صحيحة'),
                     );
                     ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   }
@@ -207,6 +207,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           padding: EdgeInsets.symmetric(
                               horizontal: size.width * .070),
                           child: InputFieldWidget(
+                              isEmail: true,
                               controller: emailController,
                               isPassword: false,
                               icon: const Icon(Icons.email),

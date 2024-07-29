@@ -10,6 +10,8 @@ class InputFieldWidget extends StatefulWidget {
     required this.icon,
     required this.text,
     this.isArabic = false,
+    this.isNumber = false,
+    this.isEmail = false,
   }) : super(key: key);
 
   final TextEditingController controller;
@@ -17,13 +19,15 @@ class InputFieldWidget extends StatefulWidget {
   final Icon icon;
   final String text;
   final bool isArabic;
+  final bool isNumber;
+  final bool isEmail;
 
   @override
   State<InputFieldWidget> createState() => _InputFieldWidgetState();
 }
 
 class _InputFieldWidgetState extends State<InputFieldWidget> {
-  RegExp arabicPattern = RegExp(r'^[\u0600-\u06FF\s]+$');
+  RegExp arabicPattern = RegExp(r'^[\u0600-\u06FF\s\-/]+$');
   RegExp englishNumbersSpecialCharsPattern =
       RegExp(r'^[a-zA-Z0-9\s!@#$%^&*(),.?":{}|<>+=\-*/]+$');
 
@@ -35,9 +39,16 @@ class _InputFieldWidgetState extends State<InputFieldWidget> {
       inputFormatters: [
         widget.isArabic
             ? FilteringTextInputFormatter.allow(arabicPattern)
-            : FilteringTextInputFormatter.allow(
-                englishNumbersSpecialCharsPattern)
+            : widget.isEmail
+                ? FilteringTextInputFormatter.deny(RegExp(r'\s'))
+                : FilteringTextInputFormatter.allow(
+                    englishNumbersSpecialCharsPattern),
       ],
+      keyboardType: widget.isNumber
+          ? TextInputType.number
+          : widget.isEmail
+              ? TextInputType.emailAddress
+              : TextInputType.text,
       textDirection: TextDirection.rtl,
       obscureText: widget.isPassword ? hidePass : !hidePass,
       autovalidateMode: AutovalidateMode.onUserInteraction,

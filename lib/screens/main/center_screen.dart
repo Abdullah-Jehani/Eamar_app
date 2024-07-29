@@ -3,7 +3,6 @@ import 'package:eamar_app/providers/report_provider.dart';
 import 'package:eamar_app/screens/reportSubmittion/first_screen.dart';
 import 'package:eamar_app/widgets/center/card_widget.dart';
 import 'package:eamar_app/widgets/home/button_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -168,7 +167,7 @@ class _CenterScreenState extends State<CenterScreen> {
                                 children: [
                                   Image.asset(
                                     'assets/icons/NoResultsFounded.png',
-                                    width: size.width * .6,
+                                    width: size.width * .5,
                                   ),
                                   Text(
                                     'عذرا , يبدو انه لايوجد نتائج لبحثك',

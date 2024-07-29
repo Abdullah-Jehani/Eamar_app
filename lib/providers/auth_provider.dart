@@ -67,8 +67,10 @@ class AuthProvider with ChangeNotifier {
     address = prefs.getString('address');
     dob = prefs.getString('dob');
     profilePhoto = prefs.getString('profilePhoto');
-    print(
-        "Loaded user data: $currentUserName, $currentEmail, $phoneNumber, $address , $profilePhoto");
+    if (kDebugMode) {
+      print(
+          "Loaded user data: $currentUserName, $currentEmail, $phoneNumber, $address , $profilePhoto");
+    }
     notifyListeners();
   }
 
@@ -285,7 +287,9 @@ class AuthProvider with ChangeNotifier {
 
       if (response.statusCode == 200) {
         var decodedResponse = json.decode(response.body);
-        print('API Response: $decodedResponse'); // Debug logging
+        if (kDebugMode) {
+          print('API Response: $decodedResponse');
+        } // Debug logging
 
         // Check if 'user' is present and not null
         if (decodedResponse['user'] != null) {
@@ -306,12 +310,14 @@ class AuthProvider with ChangeNotifier {
         }
       } else {
         var errorMessage = json.decode(response.body)['message'] ??
-            'An unknown error occurred';
+            'حدث خطأ الرجاء التحقق من اتصالك بالانترنت';
         setLoading(false);
         return [false, errorMessage];
       }
     } catch (e) {
-      print('Error: $e'); // Debug logging
+      if (kDebugMode) {
+        print('Error: $e');
+      } // Debug logging
       setLoading(false);
       return [false, 'حدث خطأ الرجاء التحقق من اتصالك بالانترنت'];
     }

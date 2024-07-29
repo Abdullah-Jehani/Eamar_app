@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:confetti/confetti.dart';
 import 'package:eamar_app/helpers/colors.dart';
 import 'package:eamar_app/screens/secondary/tabs_screen.dart';
@@ -9,13 +8,12 @@ class FinishScreen extends StatefulWidget {
   const FinishScreen({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _FinishScreenState createState() => _FinishScreenState();
 }
 
 class _FinishScreenState extends State<FinishScreen> {
   bool isPlaying = false;
-  final controller = ConfettiController();
+  final controller = ConfettiController(duration: const Duration(seconds: 10));
 
   @override
   void initState() {
@@ -51,11 +49,9 @@ class _FinishScreenState extends State<FinishScreen> {
         child: Align(
           child: Column(
             children: [
-              SizedBox(
-                height: size.height * 0.45,
-              ),
               ConfettiWidget(
                 confettiController: controller,
+                blastDirection: 3.14 / 2, // Confetti falls from the top
                 blastDirectionality: BlastDirectionality.explosive,
                 shouldLoop: true,
                 colors: const [
@@ -65,11 +61,16 @@ class _FinishScreenState extends State<FinishScreen> {
                   Colors.orange,
                   Colors.purple,
                 ],
+                numberOfParticles: 50, // Increase the number of particles
+                gravity: 0.1, // Adjust the gravity for a more falling effect
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
                     Column(
                       children: [
+                        SizedBox(
+                          height: size.height * 0.45,
+                        ),
                         Text(
                           '! تهانينا ',
                           style: TextStyle(

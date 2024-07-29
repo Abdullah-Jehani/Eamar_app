@@ -10,6 +10,7 @@ class ReportInpufField extends StatefulWidget {
     required this.icon,
     required this.text,
     this.isArabic = false,
+    this.isNumber = false,
   }) : super(key: key);
 
   final TextEditingController controller;
@@ -17,13 +18,14 @@ class ReportInpufField extends StatefulWidget {
   final Icon icon;
   final String text;
   final bool isArabic;
+  final bool isNumber;
 
   @override
   State<ReportInpufField> createState() => _ReportInpufFieldState();
 }
 
 class _ReportInpufFieldState extends State<ReportInpufField> {
-  RegExp arabicPattern = RegExp(r'^[\u0600-\u06FF\s]+$');
+  RegExp arabicPattern = RegExp(r'^[\u0600-\u06FF\s\-/]+$');
   RegExp englishNumbersSpecialCharsPattern =
       RegExp(r'^[a-zA-Z0-9\s!@#$%^&*(),.?":{}|<>+=\-*/]+$');
 
@@ -38,6 +40,7 @@ class _ReportInpufFieldState extends State<ReportInpufField> {
             : FilteringTextInputFormatter.allow(
                 englishNumbersSpecialCharsPattern)
       ],
+      keyboardType: widget.isNumber ? TextInputType.number : TextInputType.text,
       textDirection: TextDirection.rtl,
       obscureText: widget.isPassword ? hidePass : !hidePass,
       autovalidateMode: AutovalidateMode.onUserInteraction,

@@ -135,7 +135,7 @@ class _ClassificationScreenState extends State<ClassificationScreen> {
                 ),
                 // Show loading indicator if fetching
                 if (reportProvider.isLocating)
-                  Center(child: CircularProgressIndicator()),
+                  const Center(child: CircularProgressIndicator()),
                 if (reportProvider.subClassifications.isNotEmpty)
                   Directionality(
                     textDirection: TextDirection.rtl,
@@ -175,7 +175,7 @@ class _ClassificationScreenState extends State<ClassificationScreen> {
                   ),
                 if (reportProvider.subClassifications.isEmpty &&
                     !reportProvider.isLocating)
-                  Center(child: Text('No sub-classifications available')),
+                  const Center(child: Text('No sub-classifications available')),
               ],
             ),
           ),

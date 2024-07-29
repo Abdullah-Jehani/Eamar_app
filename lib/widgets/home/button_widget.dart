@@ -20,7 +20,7 @@ class _ButtonWidgetState extends State<ButtonWidget> {
         if (widget.route == null) {
           // Handle the case where route is null
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('No route provided')),
+            const SnackBar(content: Text('No route provided')),
           );
           return;
         }

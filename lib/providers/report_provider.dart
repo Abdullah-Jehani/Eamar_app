@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:eamar_app/services/api.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -37,20 +36,25 @@ class ReportProvider with ChangeNotifier {
   // Setters
   set selectedId(int? value) {
     _selectedReportId = value;
-    print('Selected Report ID set to: $_selectedReportId'); // Debug print
+    if (kDebugMode) {
+      print('Selected Report ID set to: $_selectedReportId');
+    } // Debug print
     notifyListeners();
   }
 
   set selectedName(String? value) {
     selectedReportName = value;
-    print('Selected Report Name set to: $selectedReportName'); // Debug print
+    if (kDebugMode) {
+      print('Selected Report Name set to: $selectedReportName');
+    } // Debug print
     notifyListeners();
   }
 
   set selectedClassId(int? value) {
     selectedClassificationId = value;
-    print(
-        'Selected Classification ID set to: $selectedClassificationId'); // Debug print
+    if (kDebugMode) {
+      print('Selected Classification ID set to: $selectedClassificationId');
+    } // Debug print
     notifyListeners();
     // Remove this fetch call since it's not needed here
     // if (value != null) {
@@ -74,7 +78,9 @@ class ReportProvider with ChangeNotifier {
     description = null;
 
     notifyListeners();
-    print('All data cleared');
+    if (kDebugMode) {
+      print('All data cleared');
+    }
   }
 
   Future<void> fetchReports() async {
@@ -157,8 +163,9 @@ class ReportProvider with ChangeNotifier {
       _isLocating = true;
       notifyListeners();
 
-      print(
-          'Fetching sub-classifications for parentId: $parentId'); // Debug print
+      if (kDebugMode) {
+        print('Fetching sub-classifications for parentId: $parentId');
+      } // Debug print
       final response =
           await api.get('classifications/$parentId/subclassifications');
 
@@ -187,7 +194,7 @@ class ReportProvider with ChangeNotifier {
     }
   }
 
-  Future<void> submitReport() async {
+  Future<bool> submitReport() async {
     final data = {
       'latitude': lat.toString(),
       'longitude': long.toString(),
@@ -201,7 +208,7 @@ class ReportProvider with ChangeNotifier {
     };
 
     try {
-      var uri = Uri.parse('http://192.168.1.6:8080/api/reports');
+      var uri = Uri.parse('http://192.168.1.7:8080/api/reports');
       var request = http.MultipartRequest('POST', uri);
 
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -230,18 +237,20 @@ class ReportProvider with ChangeNotifier {
         final body = json.decode(response.body);
         debugPrint('Submit Report Response: ${body['message']}');
         clearAllData();
+        return true; // Successful submission
       } else {
         debugPrint('Failed to submit report: ${response.body}');
-        throw Exception('Failed to submit report: ${response.body}');
+        return false; // Failed submission
       }
     } catch (e) {
       debugPrint('Error submitting report: $e');
+      return false; // Error occurred
     }
   }
 
   Future<bool> deleteReport(int reportId) async {
     try {
-      final uri = Uri.parse('http://192.168.1.6:8080/api/reports/$reportId');
+      final uri = Uri.parse('http://192.168.1.7:8080/api/reports/$reportId');
       final response = await http.delete(uri, headers: await _getHeaders());
 
       if (kDebugMode) {

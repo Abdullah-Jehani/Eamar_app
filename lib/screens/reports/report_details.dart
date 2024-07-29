@@ -226,7 +226,7 @@ class _ReportDetailsState extends State<ReportDetails> {
                           Navigator.pushAndRemoveUntil(
                             context,
                             CupertinoPageRoute(
-                                builder: (context) => TabsScreen()),
+                                builder: (context) => const TabsScreen()),
                             (route) => false,
                           );
                         } else {

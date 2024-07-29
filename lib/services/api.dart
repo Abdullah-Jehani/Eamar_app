@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-const apiUrl = "http://192.168.1.6:8080/api/";
+const apiUrl = "http://192.168.1.7:8080/api/";
 
 class Api {
   Future<Response> post(String url, Map body) async {

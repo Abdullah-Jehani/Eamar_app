@@ -5,7 +5,6 @@ import 'package:eamar_app/widgets/location/location_card_widget.dart';
 import 'package:eamar_app/widgets/reportSubmittions/button_widget.dart';
 import 'package:eamar_app/widgets/reportSubmittions/custom_close_widget.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
@@ -21,6 +20,7 @@ class LocationScreen extends StatefulWidget {
 class _LocationScreenState extends State<LocationScreen> {
   String? _userLocation;
   bool _isLoading = false;
+  bool _isNextLoading = false;
   double? _latitude;
   double? _longitude;
 
@@ -53,7 +53,7 @@ class _LocationScreenState extends State<LocationScreen> {
           // Permission denied, display an error
           setState(() {
             _isLoading = false;
-            _userLocation = 'Location permissions are denied.';
+            _userLocation = 'خدمة الموقع غير مفعلة';
           });
           return;
         }
@@ -79,7 +79,7 @@ class _LocationScreenState extends State<LocationScreen> {
       } else {
         setState(() {
           _isLoading = false;
-          _userLocation = 'Error getting location';
+          _userLocation = 'حدث خطأ ما';
         });
       }
     } catch (e) {
@@ -120,23 +120,29 @@ class _LocationScreenState extends State<LocationScreen> {
             ),
             GestureDetector(
               onTap: _getUserLocation,
-              child: LocationCard(
-                location: _userLocation,
-              ),
+              child: _isLoading
+                  ? const CircularProgressIndicator()
+                  : LocationCard(
+                      location: _userLocation,
+                    ),
             ),
             SizedBox(
               height: size.height * .31,
             ),
             GestureDetector(
-              onTap: () {
+              onTap: () async {
                 if (_latitude != null && _longitude != null) {
-                  if (kDebugMode) {
-                    print('Hello world');
-                  }
+                  setState(() {
+                    _isNextLoading = true;
+                  });
+
                   // Store location in provider
                   reportProvider.lat = _latitude!;
                   reportProvider.long = _longitude!;
                   reportProvider.location = _userLocation;
+
+                  // Simulate a delay for the loader
+                  await Future.delayed(const Duration(seconds: 1));
 
                   // Navigate to the next screen
                   Navigator.push(
@@ -144,6 +150,10 @@ class _LocationScreenState extends State<LocationScreen> {
                     CupertinoPageRoute(
                         builder: (context) => const PersonalInfo()),
                   );
+
+                  setState(() {
+                    _isNextLoading = false;
+                  });
                 } else {
                   // Show an alert or snackbar
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -159,10 +169,12 @@ class _LocationScreenState extends State<LocationScreen> {
                   );
                 }
               },
-              child: ReportButton(
-                text: 'التالي',
-                bgColor: primaryColor,
-              ),
+              child: _isNextLoading
+                  ? const CircularProgressIndicator()
+                  : ReportButton(
+                      text: 'التالي',
+                      bgColor: primaryColor,
+                    ),
             ),
           ],
         ),

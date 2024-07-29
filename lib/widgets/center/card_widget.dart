@@ -25,6 +25,11 @@ class _ReportCardState extends State<ReportCard> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
+    // Convert widget.days to an integer for comparison
+    int daysValue = int.tryParse(widget.days.toString()) ??
+        -1; // Use -1 as a default if parsing fails
+
     return Padding(
       padding: EdgeInsets.only(bottom: size.height * .02),
       child: Stack(
@@ -78,13 +83,22 @@ class _ReportCardState extends State<ReportCard> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      ' قبل ${widget.days} يوم ',
-                      style: const TextStyle(
-                          color: Colors.black,
-                          fontFamily: 'cairo',
-                          fontSize: 13),
-                    ),
+                    // Check if daysValue is not zero
+                    daysValue != 0
+                        ? Text(
+                            'قبل $daysValue يوم',
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'cairo',
+                                fontSize: 13),
+                          )
+                        : Text(
+                            'اليوم',
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'cairo',
+                                fontSize: 13),
+                          ),
                     SizedBox(
                       height: size.height * 0.025,
                     ),

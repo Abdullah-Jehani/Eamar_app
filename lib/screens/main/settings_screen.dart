@@ -2,6 +2,7 @@ import 'package:eamar_app/helpers/colors.dart';
 import 'package:eamar_app/providers/auth_provider.dart';
 import 'package:eamar_app/screens/auth/login_screen.dart';
 import 'package:eamar_app/screens/profile/profile_screen.dart';
+import 'package:eamar_app/screens/secondary/next_version_screen.dart';
 import 'package:eamar_app/widgets/settings/setting_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,6 @@ import 'package:provider/provider.dart';
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
 
-  @override
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
@@ -37,7 +37,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(6),
                         child: Image.network(
-                          'http://192.168.1.6:8080/storage/${auth.profilePhoto}',
+                          'http://192.168.1.7:8080/storage/${auth.profilePhoto}',
                           width: 64,
                           height: 64,
                           fit: BoxFit.cover,
@@ -98,11 +98,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        CupertinoPageRoute(
-                            builder: (context) => const ProfileScreen()),
-                        (route) => false);
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => const ProfileScreen(),
+                      ),
+                    );
                   },
                   child: const SettingWidget(
                     img: 'assets/images/home/profileIcon.png',
@@ -112,23 +113,53 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 SizedBox(
                   height: size.height * .03,
                 ),
-                const SettingWidget(
-                  img: 'assets/images/home/notificationIcon.png',
-                  hradline: 'الاشعارات',
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => const NextVersionScreen(),
+                      ),
+                    );
+                  },
+                  child: const SettingWidget(
+                    img: 'assets/images/home/notificationIcon.png',
+                    hradline: 'الاشعارات',
+                  ),
                 ),
                 SizedBox(
                   height: size.height * .03,
                 ),
-                const SettingWidget(
-                  img: 'assets/images/home/securityIcon.png',
-                  hradline: 'الامان',
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => const NextVersionScreen(),
+                      ),
+                    );
+                  },
+                  child: const SettingWidget(
+                    img: 'assets/images/home/securityIcon.png',
+                    hradline: 'الامان',
+                  ),
                 ),
                 SizedBox(
                   height: size.height * .03,
                 ),
-                const SettingWidget(
-                  img: 'assets/images/home/AppSettings.png',
-                  hradline: 'اعدادات التطبيق',
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => const NextVersionScreen(),
+                      ),
+                    );
+                  },
+                  child: const SettingWidget(
+                    img: 'assets/images/home/AppSettings.png',
+                    hradline: 'اعدادات التطبيق',
+                  ),
                 ),
                 SizedBox(
                   height: size.height * .03,
@@ -143,23 +174,53 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 SizedBox(
                   height: size.height * .03,
                 ),
-                const SettingWidget(
-                  img: 'assets/images/home/languageIcon.png',
-                  hradline: 'لغة التطبيق',
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => const NextVersionScreen(),
+                      ),
+                    );
+                  },
+                  child: const SettingWidget(
+                    img: 'assets/images/home/languageIcon.png',
+                    hradline: 'لغة التطبيق',
+                  ),
                 ),
                 SizedBox(
                   height: size.height * .03,
                 ),
-                const SettingWidget(
-                  img: 'assets/images/home/helpCenter.png',
-                  hradline: 'مركز المساعدة',
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => const NextVersionScreen(),
+                      ),
+                    );
+                  },
+                  child: const SettingWidget(
+                    img: 'assets/images/home/helpCenter.png',
+                    hradline: 'مركز المساعدة',
+                  ),
                 ),
                 SizedBox(
                   height: size.height * .03,
                 ),
-                const SettingWidget(
-                  img: 'assets/images/home/rateApp.png',
-                  hradline: 'قيم التطبيق',
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => const NextVersionScreen(),
+                      ),
+                    );
+                  },
+                  child: const SettingWidget(
+                    img: 'assets/images/home/rateApp.png',
+                    hradline: 'قيم التطبيق',
+                  ),
                 ),
                 SizedBox(
                   height: size.height * .03,
@@ -174,9 +235,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 SizedBox(
                   height: size.height * .03,
                 ),
-                const SettingWidget(
-                  img: 'assets/images/home/DarkTheme.png',
-                  hradline: 'الوضع الليلي',
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => const NextVersionScreen(),
+                      ),
+                    );
+                    // Handle Dark Theme toggle
+                  },
+                  child: const SettingWidget(
+                    img: 'assets/images/home/DarkTheme.png',
+                    hradline: 'الوضع الليلي',
+                  ),
                 ),
                 SizedBox(
                   height: size.height * .03,

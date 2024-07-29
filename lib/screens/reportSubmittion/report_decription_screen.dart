@@ -1,6 +1,7 @@
 import 'package:eamar_app/helpers/colors.dart';
 import 'package:eamar_app/providers/report_provider.dart';
 import 'package:eamar_app/screens/reportSubmittion/last_screen.dart';
+import 'package:eamar_app/screens/secondary/tabs_screen.dart';
 import 'package:eamar_app/widgets/reportSubmittions/button_widget.dart';
 import 'package:eamar_app/widgets/reportSubmittions/custom_close_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -139,15 +140,39 @@ class _ReportDescriptionState extends State<ReportDescription> {
                         // Update the report provider with the description
                         report.description = descriptionController.text;
 
-                        await report.submitReport();
+                        bool success = await report.submitReport();
 
-                        Navigator.pushAndRemoveUntil(
-                          context,
-                          CupertinoPageRoute(
-                            builder: (context) => const LastSreen(),
-                          ),
-                          (route) => false,
-                        );
+                        if (success) {
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            CupertinoPageRoute(
+                              builder: (context) => const LastSreen(),
+                            ),
+                            (route) => false,
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              showCloseIcon: true,
+                              content: Text(
+                                textAlign: TextAlign.right,
+                                'فشل في تقديم البلاغ، حاول مرة أخرى.',
+                                style: TextStyle(
+                                    fontFamily: 'cairo', fontSize: 14),
+                              ),
+                            ),
+                          );
+
+                          // Navigate to the home page
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            CupertinoPageRoute(
+                              builder: (context) =>
+                                  const TabsScreen(), // Replace with your HomePage widget
+                            ),
+                            (route) => false,
+                          );
+                        }
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(

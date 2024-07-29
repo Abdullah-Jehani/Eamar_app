@@ -163,6 +163,7 @@ class _AccountDetailsState extends State<AccountDetails> {
                             EdgeInsets.symmetric(horizontal: size.width * .070),
                         child: InputFieldWidget(
                           isArabic: false,
+                          isNumber: true,
                           text: '09XXXXXXXX',
                           controller: phoneNumberController,
                           isPassword: false,
